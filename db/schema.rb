@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_03_052413) do
+ActiveRecord::Schema.define(version: 2018_05_03_053204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2018_05_03_052413) do
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "versions_count", default: 0
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "versionable_type"
+    t.bigint "versionable_id"
+    t.text "diff"
+    t.integer "number"
+    t.datetime "created_at"
+    t.index ["versionable_type", "versionable_id"], name: "index_versions_on_versionable_type_and_versionable_id"
   end
 
 end

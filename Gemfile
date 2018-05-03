@@ -36,7 +36,9 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'acts_as_list', git: 'git@github.com:swanandp/acts_as_list.git'
 gem 'bourbon'
+gem 'diff-lcs'
 gem 'figaro'
 gem 'haml-rails'
 
@@ -68,6 +70,7 @@ group :test do
   gem 'rspec-collection_matchers', require: false
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
+  gem 'timecop'
   gem 'zonebie'
 end
 
