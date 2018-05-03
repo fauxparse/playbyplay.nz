@@ -36,6 +36,15 @@ module Versionable
     self.class.versioned_attributes
   end
 
+  def compare_with(other)
+    versioned_attributes.inject({}) do |changes, attr|
+      first = send(attr)
+      second = other.send(attr)
+      changes[attr] = [first, second] unless first == second
+      changes
+    end
+  end
+
   attr_writer :version_number
 
   private
