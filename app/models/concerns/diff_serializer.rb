@@ -2,12 +2,31 @@
 
 class DiffSerializer
   def self.dump(diff)
-    (diff&.transform_values { |patch| patch.flatten.map(&:to_a) } || {}).to_json
+    new.dump(diff)
   end
 
   def self.load(diff)
-    JSON.parse(diff || '{}').transform_values do |patch|
-      patch.map { |change| Diff::LCS::Change.from_a(change) }
-    end
+    new.load(diff)
+  end
+
+  def dump(diff)
+    (diff || {}).transform_values { |hunks| compressor.compress(hunks) }.to_json
+  end
+
+  def load(diff)
+    JSON
+      .parse(diff || '{}')
+      .symbolize_keys
+      .transform_values do |hunks|
+        compressor.uncompress(hunks).map do |hunk|
+          hunk.map { |change| Diff::LCS::Change.from_a(change) }
+        end
+      end
+  end
+
+  private
+
+  def compressor
+    @compressor ||= DiffCompressor.new
   end
 end
