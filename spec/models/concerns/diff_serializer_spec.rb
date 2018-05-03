@@ -9,7 +9,8 @@ RSpec.describe DiffSerializer do
   let(:diff) { { text: Diff::LCS.diff(first, second) } }
 
   let(:dumped) do
-    '{"text":[[["-",0,"p"]],[["-",4,"es"],["+",3,"ariot"]]]}'
+    '{"text":[[["-",0,"p"]],[["-",4,"e"],["-",5,"s"],["+",3,"a"],["+",4,"r"],' \
+      '["+",5,"i"],["+",6,"o"],["+",7,"t"]]]}'
   end
 
   describe '#dump' do
