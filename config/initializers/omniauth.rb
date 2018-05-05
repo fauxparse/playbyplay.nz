@@ -22,6 +22,12 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     Rails.application.credentials.facebook[:id],
     Rails.application.credentials.facebook[:secret],
     secure_image_url: true
+
+  provider :google_oauth2,
+    Rails.application.credentials.google[:id],
+    Rails.application.credentials.google[:secret],
+    image_aspect_ratio: 'square',
+    name: :google
 end
 
 OmniAuth.config.logger = Rails.logger
