@@ -16,7 +16,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require 'support/simplecov'
+require 'simplecov'
 require 'zonebie/rspec'
 
 RSpec.configure do |config|
