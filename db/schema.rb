@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_03_053204) do
+ActiveRecord::Schema.define(version: 2018_05_05_012802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "identities", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.datetime "created_at"
+    t.index ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.text "text"

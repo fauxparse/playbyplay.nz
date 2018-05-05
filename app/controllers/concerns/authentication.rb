@@ -22,11 +22,11 @@ module Authentication
   end
 
   def current_user
-    session[:logged_in_user]
+    @current_user ||= Identity.find_by(id: session[:logged_in_user])
   end
 
   def current_user=(user)
-    session[:logged_in_user] = user.to_param
+    session[:logged_in_user] = user.id
   end
 
   def save_location_and_redirect_to(path)
