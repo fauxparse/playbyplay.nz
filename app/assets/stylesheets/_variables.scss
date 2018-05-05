@@ -1,0 +1,34 @@
+$bourbon: (
+  'modular-scale-ratio': 1.5,
+  'modular-scale-base': 1em 0.75em
+);
+
+$pink: #f73859;
+$blue: #43dde6;
+$white: #fff;
+$light-grey: #dbedf3;
+$medium-grey: #404b69;
+$dark-grey: #283149;
+
+$action-color: $pink;
+$hover-color: lighten($pink, 1);
+$highlight-color: rgba($blue, 0.25);
+
+$base-font-family: Sailec, $font-stack-helvetica;
+$base-font-weight: 400;
+$bold-font-weight: 800;
+$base-line-height: 1.5;
+
+$base-border-width: 1px;
+$base-border-radius: #{3em / strip-unit($base-font-size)};
+
+$icon-size: 1.5em;
+$base-spacing: 1.5em;
+$small-spacing: $base-spacing / 2;
+$large-spacing: $base-spacing * 2;
+$line-width: 60em;
+$narrow-width: $line-width / 3;
+$medium-width: $line-width / 2;
+
+$base-duration: 150ms;
+$base-timing: cubic-bezier(0.4, 0.0, 0.2, 1);

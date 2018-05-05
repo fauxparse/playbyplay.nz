@@ -37,10 +37,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'acts_as_list', git: 'git@github.com:swanandp/acts_as_list.git'
-gem 'bourbon'
+gem 'autoprefixer-rails'
+gem 'bourbon', github: 'thoughtbot/bourbon'
 gem 'diff-lcs'
 gem 'figaro'
 gem 'haml-rails'
+gem 'inline_svg'
 gem 'omniauth'
 gem 'omniauth-facebook'
 

@@ -1,0 +1,28 @@
+body {
+  font-family: $base-font-family;
+  font-weight: $base-font-weight;
+  line-height: $base-line-height;
+}
+
+a {
+  color: $action-color;
+  text-decoration: none;
+  transition: opacity $base-duration $base-timing;
+
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+p {
+  margin: 0 0 $small-spacing;
+}
+
+.text-link {
+  display: inline-block;
+  background: linear-gradient(to bottom, transparent 87.5%, $highlight-color 87.5%);
+
+  .dark-background & {
+    color: white;
+  }
+}

@@ -33,3 +33,10 @@ en:
   reviews:
     index:
       new: 'Write a review'
+  sessions:
+    new:
+      title: 'Hello.'
+      providers:
+        facebook: 'Facebook'
+        twitter: 'Twitter'
+        google: 'Google'
