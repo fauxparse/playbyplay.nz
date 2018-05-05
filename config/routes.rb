@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'login' => 'sessions#new', as: :login
+  match 'auth/:provider/callback', to: 'sessions#create', via: %i[get post]
+
+  resources :reviews, only: %i[new]
+
+  root to: 'reviews#index'
 end

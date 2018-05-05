@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - 'bin/*'
+    - 'script/*'
     - 'db/schema.rb'
     - 'node_modules/**/*'
 
@@ -13,12 +14,15 @@ Lint/AmbiguousBlockAssociation:
 
 Metrics/BlockLength:
   Exclude:
+    - '**/*.rake'
     - 'config/environments/*'
     - 'spec/**/*'
 
 Metrics/LineLength:
   Max: 80
   IgnoredPatterns: ['\A\s*#']
+  Exclude:
+    - '**/*.rake'
 
 Metrics/MethodLength:
   Exclude:

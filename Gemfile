@@ -41,6 +41,8 @@ gem 'bourbon'
 gem 'diff-lcs'
 gem 'figaro'
 gem 'haml-rails'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -61,11 +63,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 
   gem 'spring'
+  gem 'spring-commands-cucumber'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do
+  gem 'capybara'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
   gem 'email_spec'
   gem 'rspec-collection_matchers', require: false
   gem 'shoulda-matchers'

@@ -14,3 +14,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# Don't generate system test files.
+Rails.application.config.generators.system_tests = nil
+Rails.application.config.generators.assets = false
+Rails.application.config.generators.helper = false
+Rails.application.config.generators.view_specs = false
