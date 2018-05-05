@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :identity do
+    user
     provider 'facebook'
     uid 'abcdefghij'
   end

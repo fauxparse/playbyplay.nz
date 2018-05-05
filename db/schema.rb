@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_05_012802) do
+ActiveRecord::Schema.define(version: 2018_05_05_015433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 2018_05_05_012802) do
     t.string "provider"
     t.string "uid"
     t.datetime "created_at"
+    t.bigint "user_id"
     t.index ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true
+    t.index ["user_id", "provider"], name: "index_identities_on_user_id_and_provider", unique: true
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -27,6 +30,13 @@ ActiveRecord::Schema.define(version: 2018_05_05_012802) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "versions_count", default: 0
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "versions", force: :cascade do |t|
@@ -38,4 +48,5 @@ ActiveRecord::Schema.define(version: 2018_05_05_012802) do
     t.index ["versionable_type", "versionable_id"], name: "index_versions_on_versionable_type_and_versionable_id"
   end
 
+  add_foreign_key "identities", "users", on_delete: :cascade
 end

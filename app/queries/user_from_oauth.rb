@@ -6,12 +6,28 @@ class UserFromOauth
   end
 
   def user
-    @user ||= Identity.find_or_create_by(provider: provider, uid: uid)
+    @user ||= identity.user
   end
 
   private
 
   attr_reader :auth_hash
+
+  def identity
+    Identity.find_by(provider: provider, uid: uid) || new_user.identities.first
+  end
+
+  def new_user
+    User.create!(
+      name: info_hash[:name],
+      email: info_hash[:email],
+      identities: [Identity.new(provider: provider, uid: uid)]
+    )
+  end
+
+  def info_hash
+    auth_hash[:info]
+  end
 
   def provider
     auth_hash[:provider]
