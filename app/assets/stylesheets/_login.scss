@@ -1,4 +1,5 @@
 .login {
+  position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -14,12 +15,46 @@
   @include medium-screens {
     padding: $large-spacing calc(50vw - #{$medium-width / 2});
   }
+
+  .page-content ~ & {
+    @include position(absolute, 0 0 null 0);
+    z-index: -1;
+    transform: translate3d(0, 0, -16em);
+    transform-origin: 50% 50%;
+    transition: transform $full-page-duration $base-timing;
+    box-shadow: 0 0 4em rgba(0, 0, 0, 0.5);
+  }
+
+  .page-content--hidden ~ & {
+    transform: translate3d(0, 0, 0);
+    transition-delay: $slow-duration;
+  }
+}
+
+.login__close {
+  @include position(absolute, $small-spacing null null $small-spacing);
+  padding: $small-spacing;
+  opacity: 0.5;
+  transition: opacity $base-duration $base-timing;
+  cursor: pointer;
+
+  .page-content & {
+    display: none;
+  }
+
+  svg {
+    display: block;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .login__title {
   font-weight: $bold-font-weight;
-  font-size: modular-scale(8);
-  line-height: 1;
+  font-size: modular-scale(6);
+  line-height: modular-scale(1);
   margin: 0;
 }
 
@@ -49,17 +84,17 @@
 
 .login__logo {
   display: block;
+  color: inherit;
   margin: $small-spacing;
-  color: $white;
-  opacity: 0.25;
+  opacity: 0.5;
 
   svg {
-    @include size(modular-scale(8));
+    @include size(modular-scale(6));
     display: block;
   }
 
   &:hover {
-    color: $white;
-    opacity: 0.5;
+    color: inherit;
+    opacity: 1;
   }
 }

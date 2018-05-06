@@ -5,8 +5,8 @@ module TextHelper
     include Redcarpet::Render::SmartyPants
 
     def link(link, title, content)
-      %Q{<a href="#{link}" title="#{title}" class="text-link" } +
-        %Q{target="_blank">#{content}</a>}
+      %(<a href="#{link}" title="#{title}" class="text-link" ) +
+        %(target="_blank">#{content}</a>)
     end
   end
 

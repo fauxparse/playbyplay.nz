@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', as: :login
   match 'logout' => 'sessions#destroy', as: :logout, via: %i[get delete]
 
-  match 'auth/:provider/callback', to: 'sessions#create', via: %i[get post]
+  constraints provider: /#{OmniAuth.registered_providers.join('|')}/ do
+    get 'login/with/:provider' => 'sessions#oauth', as: :oauth_login
+    match 'auth/:provider/callback', to: 'sessions#create', via: %i[get post]
+  end
 
   resources :reviews, only: %i[new]
 

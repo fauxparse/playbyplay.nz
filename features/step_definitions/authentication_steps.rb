@@ -9,5 +9,5 @@ Then('I should be taken to the login page') do
 end
 
 When('I log in with Facebook') do
-  click_link('Log in with Facebook')
+  click_link('Facebook')
 end

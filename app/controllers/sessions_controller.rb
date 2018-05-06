@@ -11,6 +11,11 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def oauth
+    self.location_before_login = params[:redirect] if params[:redirect]
+    redirect_to "/auth/#{params[:provider]}"
+  end
+
   private
 
   def auth_hash

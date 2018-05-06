@@ -1,6 +1,6 @@
 $bourbon: (
-  'modular-scale-ratio': 1.5,
-  'modular-scale-base': 1em 0.75em
+  'modular-scale-ratio': $perfect-fourth,
+  'modular-scale-base': 1em
 );
 
 $pink: #f73859;
@@ -31,4 +31,8 @@ $narrow-width: $line-width / 3;
 $medium-width: $line-width / 2;
 
 $base-duration: 150ms;
+$slow-duration: 300ms;
+$full-page-duration: 500ms;
 $base-timing: cubic-bezier(0.4, 0.0, 0.2, 1);
+$acceleration-timing: cubic-bezier(0.4, 0.0, 1, 1);
+$deceleration-timing: cubic-bezier(0.0, 0.0, 0.2, 1);

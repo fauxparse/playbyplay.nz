@@ -1,15 +1,17 @@
-.login.dark-background
+.login.dark-background{'data-controller' => 'login'}
+  .login__close{'data-action' => 'click->login#hide'}= inline_svg 'icons/close'
+
   %h1.login__title= t('.title')
 
   = m t('.intro')
 
   .login__providers
     - Identity.providers.keys.each do |provider|
-      = link_to "/auth/#{provider}", class: 'login__provider button' do
+      = link_to oauth_login_path(provider), class: 'login__provider button' do
         = inline_svg "icons/#{provider}", class: 'button__icon'
-        %span.button__text= t(provider, scope: 'sessions.new.providers')
+        %span.button__text= t(provider, scope: 'sessions.login_form.providers')
 
   = m t('.promise')
 
-  = link_to root_path, class: 'login__logo' do
+  = link_to root_path, class: 'login__logo', data: { action: 'click->login#hide' } do
     = inline_svg 'icons/logo'
