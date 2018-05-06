@@ -3,8 +3,19 @@ en:
     index:
       new: 'Write a review'
   sessions:
-    new:
+    login_form:
       title: 'Hello.'
+      intro: |
+        For our readers to trust your reviews, we’ve made a decision
+        not to allow posting anonymously or under a pseudonym.
+
+        That’s why we ask you to log in using one of these public accounts you probably already have:
+      promise: |
+        We will never use your details to post to your social media.
+        If you’re unsure, we invite you to ask a technically-minded friend to
+        [take a look at our source code](http://github.com/fauxparse/playbyplay.nz)
+        to verify that we really can’t.
+
       providers:
         facebook: 'Facebook'
         twitter: 'Twitter'

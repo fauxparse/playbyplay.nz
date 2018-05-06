@@ -1,0 +1,15 @@
+.login.dark-background
+  %h1.login__title= t('.title')
+
+  = m t('.intro')
+
+  .login__providers
+    - Identity.providers.keys.each do |provider|
+      = link_to "/auth/#{provider}", class: 'login__provider button' do
+        = inline_svg "icons/#{provider}", class: 'button__icon'
+        %span.button__text= t(provider, scope: 'sessions.new.providers')
+
+  = m t('.promise')
+
+  = link_to root_path, class: 'login__logo' do
+    = inline_svg 'icons/logo'

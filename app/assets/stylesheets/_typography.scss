@@ -19,7 +19,6 @@ p {
 }
 
 .text-link {
-  display: inline-block;
   background: linear-gradient(to bottom, transparent 87.5%, $highlight-color 87.5%);
 
   .dark-background & {
