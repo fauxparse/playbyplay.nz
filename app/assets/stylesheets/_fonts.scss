@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Sailec';
+  src: font-url('sailec_thin_webfont.woff2') format('woff2'),
+       font-url('sailec_thin_webfont.woff') format('woff');
+  font-weight: $light-font-weight;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sailec';
+  src: font-url('sailec_webfont.woff2') format('woff2'),
+       font-url('sailec_webfont.woff') format('woff');
+  font-weight: $base-font-weight;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sailec';
+  src: font-url('sailec_regular_italic_webfont.woff2') format('woff2'),
+       font-url('sailec_regular_italic_webfont.woff') format('woff');
+  font-weight: $base-font-weight;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sailec';
+  src: font-url('sailec_bold_webfont.woff2') format('woff2'),
+       font-url('sailec_bold_webfont.woff') format('woff');
+  font-weight: $bold-font-weight;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sailec';
+  src: font-url('sailec_bold_italic_webfont.woff2') format('woff2'),
+       font-url('sailec_bold_italic_webfont.woff') format('woff');
+  font-weight: $bold-font-weight;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sailec';
+  src: font-url('sailec_black_webfont.woff2') format('woff2'),
+       font-url('sailec_black_webfont.woff') format('woff');
+  font-weight: $black-font-weight;
+  font-style: normal;
+}
