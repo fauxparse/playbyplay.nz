@@ -6,6 +6,10 @@ body {
   transform-style: preserve-3d;
 }
 
+.turbolinks-progress-bar {
+  background-color: $action-color;
+}
+
 .page-content {
   background: $white;
   min-height: 100vh;
