@@ -2,10 +2,15 @@
 
 FactoryBot.define do
   sequence(:name) { |n| "User #{n}" }
-  sequence(:email) { |n| "user#{n}@example.com" }
 
   factory :user do
     name
-    email
+    email { Faker::Internet.safe_email(name) }
+
+    trait :facebook do
+      after :build do |user|
+        user.identities.build(provider: 'facebook', uid: Faker::Crypto.md5)
+      end
+    end
   end
 end
