@@ -23,6 +23,10 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     Rails.application.credentials.facebook[:secret],
     secure_image_url: true
 
+  provider :twitter,
+    Rails.application.credentials.twitter[:id],
+    Rails.application.credentials.twitter[:secret]
+
   provider :google_oauth2,
     Rails.application.credentials.google[:id],
     Rails.application.credentials.google[:secret],
