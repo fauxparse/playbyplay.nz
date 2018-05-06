@@ -19,15 +19,15 @@ $light-font-weight: 200;
 $base-font-weight: 400;
 $bold-font-weight: 600;
 $black-font-weight: 800;
-$base-line-height: 1.5;
+$base-line-height: modular-scale(2);
 
 $base-border-width: 1px;
 $base-border-radius: #{3em / strip-unit($base-font-size)};
 
 $icon-size: 1.5em;
-$base-spacing: 1.5em;
-$small-spacing: $base-spacing / 2;
-$large-spacing: $base-spacing * 2;
+$base-spacing: modular-scale(1);
+$small-spacing: modular-scale(-1);
+$large-spacing: modular-scale(3);
 $line-width: 60em;
 $narrow-width: $line-width / 3;
 $medium-width: $line-width / 2;
