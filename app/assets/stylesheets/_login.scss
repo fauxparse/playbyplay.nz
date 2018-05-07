@@ -18,15 +18,14 @@
 
   .page-content ~ & {
     @include position(absolute, 0 0 null 0);
-    z-index: -1;
-    transform: translate3d(0, 0, -16em);
+    transform: scale(0.9);
     transform-origin: 50% 50%;
     transition: transform $full-page-duration $base-timing;
     box-shadow: 0 0 4em rgba(0, 0, 0, 0.5);
   }
 
   .page-content--hidden ~ & {
-    transform: translate3d(0, 0, 0);
+    transform: scale(1);
     transition-delay: $slow-duration;
   }
 }

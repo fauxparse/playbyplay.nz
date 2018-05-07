@@ -1,9 +1,6 @@
 body {
   min-height: 100vh;
   background: $dark-grey;
-  perspective: 1200px;
-  perspective-origin: 50vw 50vh;
-  transform-style: preserve-3d;
 }
 
 .turbolinks-progress-bar {
@@ -15,12 +12,14 @@ body {
   min-height: 100vh;
   transform-origin: 50% 100%;
   transition: transform $full-page-duration $deceleration-timing $slow-duration, opacity $slow-duration $base-timing;
+  position: relative;
+  z-index: 1;
 }
 
 .page-content--hidden {
   @include position(fixed, 0 0 null 0);
   opacity: 0;
-  transform: translateY(100vh) rotateX(-45deg);
+  transform: translateY(100vh);
   transition: transform $full-page-duration $acceleration-timing, opacity $slow-duration $base-timing $full-page-duration;
   pointer-events: none;
   touch-action: none;
