@@ -12,9 +12,10 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .page-content
-      - if logged_in?
-        = "Logged in as #{current_user}"
-        = link_to 'Log out', logout_path, method: :delete
+      .page-header
+        - if logged_in?
+          = "Logged in as #{current_user}"
+          = link_to 'Log out', logout_path, method: :delete
       = yield
 
     = render '/sessions/login_form' unless logged_in? || current_page?(login_path)

@@ -3,3 +3,9 @@
     @content
   }
 }
+
+@mixin wide-screens {
+  @media (screen and min-width: #{$line-width + $base-spacing * 2}) {
+    @content
+  }
+}

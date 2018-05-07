@@ -1,0 +1,17 @@
+.review-form{'data-controller' => 'review-form'}
+  %section.review-form__section#review-form__section--what
+    .review-form__step
+      %h2.review-form__heading
+        %a{href: '#review-form__section--what', 'data-action': 'review-form#scrollTo'} What did you see?
+  %section.review-form__section#review-form__section--when
+    .review-form__step
+      %h2.review-form__heading
+        %a{href: '#review-form__section--when', 'data-action': 'review-form#scrollTo'} When did you see it?
+  %section.review-form__section#review-form__section--review
+    .review-form__step
+      %h2.review-form__heading
+        %a{href: '#review-form__section--review', 'data-action': 'review-form#scrollTo'} What did you think?
+  %section.review-form__section#review-form__section--comments
+    .review-form__step
+      %h2.review-form__heading
+        %a{href: '#review-form__section--comments', 'data-action': 'review-form#scrollTo'} Any other comments?

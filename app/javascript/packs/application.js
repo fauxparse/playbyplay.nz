@@ -1,5 +1,7 @@
 /* eslint no-console:0 */
 
+require('intersection-observer')
+
 import Rails from 'rails-ujs'
 import Turbolinks from 'turbolinks'
 import { Application } from 'stimulus'
