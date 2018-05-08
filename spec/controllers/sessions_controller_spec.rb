@@ -42,4 +42,16 @@ RSpec.describe SessionsController, type: :request do
         .to(nil)
     end
   end
+
+  describe 'GET /login/with/facebook' do
+    it 'redirects to Omniauth' do
+      get oauth_login_path(:facebook)
+      expect(response).to redirect_to '/auth/facebook'
+    end
+
+    it 'sets the post-login redirect' do
+      get oauth_login_path(:facebook, redirect: '/test')
+      expect(session[:location_after_login]).to eq '/test'
+    end
+  end
 end
