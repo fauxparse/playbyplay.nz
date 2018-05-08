@@ -18,7 +18,7 @@ export default class extends Controller {
     this.observer.disconnect()
   }
 
-  scrolled = (entries, observer) => {
+  scrolled = entries => {
     entries.forEach(entry =>
       entry.target.classList.toggle(
         'review-form__section--fixed',
@@ -38,7 +38,10 @@ export default class extends Controller {
         to: targetElement.offsetTop - 1,
         duration: Math.abs(parent.scrollTop - targetElement.offsetTop)
       }).start(scroll().set('top'))
-      history.replaceState && history.replaceState({}, '', target)
+
+      if (window.history.replaceState) {
+        window.history.replaceState(window.history.state, '', target)
+      }
     }
   }
 }

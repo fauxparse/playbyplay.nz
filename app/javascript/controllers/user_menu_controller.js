@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ['link', 'menu']
 
   connect() {
-    console.log(this.menuTarget)
     this.drop = new Drop({
       target: this.linkTarget,
       content: this.menuTarget,

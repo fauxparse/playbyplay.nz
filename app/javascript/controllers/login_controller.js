@@ -7,7 +7,7 @@ export default class extends Controller {
     if (this.canLogIn()) {
       e.preventDefault()
       e.stopPropagation()
-      this.rewriteURLs(e.target)
+      this.rewriteURLs(e.target.closest('a'))
       this.showLoginForm()
     }
   }
@@ -22,12 +22,14 @@ export default class extends Controller {
 
   get pageContent() {
     if (this._pageContent) return this._pageContent
-    return (this._pageContent = document.querySelector('.page-content'))
+    this._pageContent = document.querySelector('.page-content')
+    return this._pageContent
   }
 
   get loginForm() {
     if (this._loginForm) return this._loginForm
-    return (this._loginForm = document.querySelector('.login'))
+    this._loginForm = document.querySelector('.login')
+    return this._loginForm
   }
 
   canLogIn() {
@@ -43,8 +45,7 @@ export default class extends Controller {
   }
 
   rewriteURLs(target) {
-    target = target.closest('a')
-    if (!target.classList.contains('login-link')) {
+    if (target && !target.classList.contains('login-link')) {
       const redirect = `?redirect=${target.getAttribute('href')}`
       Array.from(document.querySelectorAll('.login__provider')).forEach(link =>
         link.setAttribute('href', link.href.replace(/(\?.*)?$/, redirect))
@@ -54,8 +55,8 @@ export default class extends Controller {
 }
 
 window.addEventListener('turbolinks:load', () => {
-  if (history.replaceState && window.location.hash.match(/#?_=_$/)) {
+  if (window.history.replaceState && window.location.hash.match(/#?_=_$/)) {
     const url = window.location.href.replace(/#.*/, '')
-    history.replaceState(history.state, '', url)
+    window.history.replaceState(window.history.state, '', url)
   }
 })

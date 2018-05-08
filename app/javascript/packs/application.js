@@ -1,4 +1,4 @@
-/* eslint no-console:0 */
+/* eslint no-console:0, import/first:0 */
 
 require('intersection-observer')
 

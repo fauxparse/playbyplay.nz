@@ -1,6 +1,10 @@
 {
   "name": "playbyplay",
   "private": true,
+  "scripts": {
+    "lint": "eslint app/javascript/**/*.js",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
+  },
   "dependencies": {
     "@rails/webpacker": "3.5",
     "intersection-observer": "^0.5.0",
@@ -8,10 +12,16 @@
     "popmotion": "^8.1.22",
     "rails-ujs": "^5.2.0",
     "stimulus": "^1.0.1",
+    "stylefire": "^1.2.15",
     "tether-drop": "^1.4.2",
     "turbolinks": "^5.1.1"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
     "webpack-dev-server": "2.11.2"
   }
 }
