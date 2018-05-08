@@ -1,7 +1,15 @@
 en:
+  application:
+    name: 'Play by Play'
+
+  shared:
+    navigation:
+      log_out: 'Log out'
+
   reviews:
     index:
       new: 'Write a review'
+
   sessions:
     login_form:
       title: 'Hello.'

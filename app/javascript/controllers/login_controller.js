@@ -1,5 +1,7 @@
 import { Controller } from 'stimulus'
 
+import 'mdn-polyfills/Element.prototype.closest'
+
 export default class extends Controller {
   show(e) {
     if (this.canLogIn()) {
@@ -41,9 +43,19 @@ export default class extends Controller {
   }
 
   rewriteURLs(target) {
-    const redirect = `?redirect=${target.getAttribute('href')}`
-    Array.from(document.querySelectorAll('.login__provider')).forEach(link =>
-      link.setAttribute('href', link.href.replace(/(\?.*)?$/, redirect))
-    )
+    target = target.closest('a')
+    if (!target.classList.contains('login-link')) {
+      const redirect = `?redirect=${target.getAttribute('href')}`
+      Array.from(document.querySelectorAll('.login__provider')).forEach(link =>
+        link.setAttribute('href', link.href.replace(/(\?.*)?$/, redirect))
+      )
+    }
   }
 }
+
+window.addEventListener('turbolinks:load', () => {
+  if (history.replaceState && window.location.hash.match(/#?_=_$/)) {
+    const url = window.location.href.replace(/#.*/, '')
+    history.replaceState(history.state, '', url)
+  }
+})

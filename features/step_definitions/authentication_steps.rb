@@ -26,9 +26,9 @@ Then('I should be taken to the login page') do
 end
 
 Then('I should be logged in') do
-  expect(page).to have_content('Log out')
+  expect(page).to have_selector('.logout-link')
 end
 
 Then('I should be logged out') do
-  expect(page).not_to have_content('Log out')
+  expect(page).not_to have_selector('.logout-link')
 end
