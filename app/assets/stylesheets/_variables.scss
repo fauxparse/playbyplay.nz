@@ -29,6 +29,7 @@ $icon-size: 1.5em;
 $base-spacing: modular-scale(1);
 $small-spacing: modular-scale(-1);
 $large-spacing: modular-scale(3);
+$keyline: $base-spacing * 2 + $large-spacing;
 $line-width: 60em;
 $narrow-width: $line-width / 3;
 $medium-width: $line-width / 2;

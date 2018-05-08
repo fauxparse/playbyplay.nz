@@ -1,14 +1,21 @@
 $review-step-count: 4;
-$review-step-collapsed-height: $base-spacing * 2 + modular-scale(1);
+$review-step-collapsed-height: $small-spacing * 2 + modular-scale(1);
 
 .review-form__step {
   box-sizing: border-box;
   border-top: 1px solid rgba($medium-grey, 0.25);
-  padding: $base-spacing;
+  padding: $small-spacing 0 $small-spacing $base-spacing;
   background: $white;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
   :first-of-type > & {
     border-top-color: transparent;
+  }
+
+  @include medium-screens {
+    padding-left: $keyline;
   }
 
   @include wide-screens {
@@ -24,6 +31,7 @@ $review-step-collapsed-height: $base-spacing * 2 + modular-scale(1);
     .review-form__step {
       position: relative;
       top: ($i - 1) * $review-step-collapsed-height;
+      height: calc(100vh - #{$review-step-count * $review-step-collapsed-height});
     }
 
     &.review-form__section--fixed {
@@ -46,11 +54,50 @@ $review-step-collapsed-height: $base-spacing * 2 + modular-scale(1);
 }
 
 .review-form__heading {
+  @include ellipsis;
+  display: block;
   margin: 0;
   font-size: modular-scale(1);
+  font-weight: $light-font-weight;
   line-height: 1;
 
   a {
     color: inherit;
+  }
+}
+
+.review-form__step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+
+  &::before {
+    content: '';
+    flex: 1;
+  }
+
+  &::after {
+    content: '';
+    flex: 2;
+  }
+}
+
+.review_form__text-field {
+  font-size: modular-scale(3);
+  font-weight: $bold-font-weight;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: rgba($medium-grey, 0.25);
+  }
+
+  @include medium-screens {
+    font-size: modular-scale(5);
   }
 }

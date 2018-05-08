@@ -8,7 +8,7 @@ import 'mdn-polyfills/Element.prototype.closest'
 export default class extends Controller {
   connect() {
     this.observer = new IntersectionObserver(this.scrolled, {
-      threshold: [1]
+      threshold: [0.95, 0.96, 0.97, 0.98, 0.99, 1]
     })
     Array.from(this.element.querySelectorAll('.review-form__section'))
       .forEach(section => this.observer.observe(section))
@@ -38,10 +38,6 @@ export default class extends Controller {
         to: targetElement.offsetTop - 1,
         duration: Math.abs(parent.scrollTop - targetElement.offsetTop)
       }).start(scroll().set('top'))
-
-      if (window.history.replaceState) {
-        window.history.replaceState(window.history.state, '', target)
-      }
     }
   }
 }

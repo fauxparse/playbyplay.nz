@@ -1,7 +1,15 @@
-body {
+body,
+#{$all-text-inputs} {
   font-family: $base-font-family;
   font-weight: $base-font-weight;
   line-height: $base-line-height;
+}
+
+::selection {
+  background: $highlight-color;
+}
+
+body {
   color: $dark-grey;
 }
 
