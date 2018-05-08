@@ -2,7 +2,8 @@
   "name": "playbyplay",
   "private": true,
   "scripts": {
-    "lint": "eslint app/javascript/**/*.js",
+    "sass-lint": "sass-lint --verbose app/assets/stylesheets/**/*.scss",
+    "eslint": "eslint app/javascript/**/*.js",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.11.0",
+    "sass-lint": "^1.12.1",
     "webpack-dev-server": "2.11.2"
   }
 }

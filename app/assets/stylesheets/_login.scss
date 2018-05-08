@@ -1,15 +1,15 @@
 .login {
-  position: relative;
-  box-sizing: border-box;
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: $large-spacing $base-spacing;
   background: $medium-grey radial-gradient(rgba($white, 0.1), transparent);
   color: $light-grey;
-  padding: $large-spacing $base-spacing;
   text-align: center;
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 
   @include medium-screens {
@@ -21,7 +21,7 @@
     transform: scale(0.9);
     transform-origin: 50% 50%;
     transition: transform $full-page-duration $base-timing;
-    box-shadow: 0 0 4em rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 4em rgba($black, 0.5);
   }
 
   .page-content--hidden ~ & {
@@ -33,9 +33,9 @@
 .login__close {
   @include position(absolute, $small-spacing null null $small-spacing);
   padding: $small-spacing;
-  opacity: 0.5;
   transition: opacity $base-duration $base-timing;
   cursor: pointer;
+  opacity: 0.5;
 
   .page-content & {
     display: none;
@@ -51,15 +51,15 @@
 }
 
 .login__title {
-  font-weight: $bold-font-weight;
-  font-size: modular-scale(6);
-  line-height: modular-scale(1);
   margin: 0;
+  font-size: modular-scale(6);
+  font-weight: $bold-font-weight;
+  line-height: modular-scale(1);
 }
 
 .login__providers {
-  margin: 0 0 $small-spacing;
   width: 100%;
+  margin: 0 0 $small-spacing;
 
   @include medium-screens {
     display: flex;
@@ -68,12 +68,14 @@
 }
 
 .login__provider {
-  margin: $small-spacing 0;
   min-width: 8em;
+  margin: $small-spacing 0;
 
-  .button__icon path {
-    fill: currentColor;
-    stroke: none;
+  .button__icon {
+    path {
+      fill: currentColor;
+      stroke: none;
+    }
   }
 
   @include medium-screens {
@@ -83,8 +85,8 @@
 
 .login__logo {
   display: block;
-  color: inherit;
   margin: $small-spacing;
+  color: inherit;
   opacity: 0.5;
 
   svg {

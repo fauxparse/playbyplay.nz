@@ -7,21 +7,21 @@ $navigation-height: 3.5em;
   border-bottom: 1px solid $border-color;
 
   &::before {
-    content: '';
     flex: 1;
+    content: '';
   }
 }
 
 .navigation__link {
   display: flex;
   align-items: center;
-  padding: 0 $base-spacing;
-  color: $medium-grey;
-  background-color: rgba($highlight-color, 0);
-  transition-property: background-color, color;
-  transition-duration: $base-duration;
-  transition-timing-function: $base-timing;
   min-width: 0;
+  padding: 0 $base-spacing;
+  transition-duration: $base-duration;
+  transition-property: background-color, color;
+  transition-timing-function: $base-timing;
+  background-color: rgba($highlight-color, 0);
+  color: $medium-grey;
 
   svg {
     flex-shrink: 0;
@@ -59,13 +59,13 @@ $navigation-height: 3.5em;
 
   .drop-target {
     min-width: 0;
-  }
 
-  .drop-target span {
-    display: none;
+    span {
+      display: none;
 
-    @include medium-screens {
-      @include ellipsis;
+      @include medium-screens {
+        @include ellipsis;
+      }
     }
   }
 }
@@ -80,17 +80,17 @@ $navigation-height: 3.5em;
 .navigation__menu-item {
   display: flex;
   align-items: center;
-  padding: $small-spacing $base-spacing;
-  color: $medium-grey;
-  background-color: rgba($highlight-color, 0);
-  transition-property: background-color, color;
-  transition-duration: $base-duration;
-  transition-timing-function: $base-timing;
   min-width: 0;
+  padding: $small-spacing $base-spacing;
+  transition-duration: $base-duration;
+  transition-property: background-color, color;
+  transition-timing-function: $base-timing;
+  background-color: rgba($highlight-color, 0);
+  color: $medium-grey;
 
   svg {
-    margin-right: $small-spacing;
     flex-shrink: 0;
+    margin-right: $small-spacing;
   }
 
   span {
@@ -103,25 +103,29 @@ $navigation-height: 3.5em;
   }
 }
 
-.navigation__dropdown.drop-element {
-  z-index: 1;
+.navigation__dropdown {
+  &.drop-element {
+    z-index: 1;
 
-  .drop-content {
-    margin: 0 -1px;
-    opacity: 0;
-    transform: translateY(-2em);
-    transition-property: opacity, transform;
-    transition-duration: $slow-duration;
-    transition-timing-function: $base-timing, $acceleration-timing;
-    pointer-events: none;
-    touch-action: none;
-  }
+    .drop-content {
+      margin: 0 -1px;
+      transform: translateY(-2em);
+      transition-duration: $slow-duration;
+      transition-property: opacity, transform;
+      transition-timing-function: $base-timing, $acceleration-timing;
+      opacity: 0;
+      pointer-events: none;
+      touch-action: none;
+    }
 
-  &.drop-open .drop-content {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-    touch-action: auto;
-    transition-timing-function: $base-timing, $deceleration-timing;
+    &.drop-open {
+      .drop-content {
+        transform: translateY(0);
+        transition-timing-function: $base-timing, $deceleration-timing;
+        opacity: 1;
+        pointer-events: auto;
+        touch-action: auto;
+      }
+    }
   }
 }

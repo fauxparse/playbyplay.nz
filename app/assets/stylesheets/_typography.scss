@@ -14,9 +14,9 @@ body {
 }
 
 a {
+  transition: opacity $base-duration $base-timing;
   color: $action-color;
   text-decoration: none;
-  transition: opacity $base-duration $base-timing;
 
   &:hover {
     color: $hover-color;
@@ -31,6 +31,6 @@ p {
   background: linear-gradient(to bottom, transparent 87.5%, $highlight-color 87.5%);
 
   .dark-background & {
-    color: white;
+    color: $white;
   }
 }

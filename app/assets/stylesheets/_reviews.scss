@@ -2,13 +2,13 @@ $review-step-count: 4;
 $review-step-collapsed-height: $small-spacing * 2 + modular-scale(1);
 
 .review-form__step {
-  box-sizing: border-box;
-  border-top: 1px solid rgba($medium-grey, 0.25);
-  padding: $small-spacing 0 $small-spacing $base-spacing;
-  background: $white;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  padding: $small-spacing 0 $small-spacing $base-spacing;
+  border-top: 1px solid rgba($medium-grey, 0.25);
+  background: $white;
+  box-sizing: border-box;
 
   :first-of-type > & {
     border-top-color: transparent;
@@ -24,30 +24,34 @@ $review-step-collapsed-height: $small-spacing * 2 + modular-scale(1);
 }
 
 @for $i from 1 through $review-step-count {
-  .review-form__section:nth-child(#{$i}) {
-    margin-top: (1 - $i) * $review-step-collapsed-height;
-    height: calc(100vh - #{($review-step-count - $i) * $review-step-collapsed-height});
+  .review-form__section {
+    &:nth-child(#{$i}) {
+      height: calc(100vh - #{($review-step-count - $i) * $review-step-collapsed-height});
+      margin-top: (1 - $i) * $review-step-collapsed-height;
 
-    .review-form__step {
-      position: relative;
-      top: ($i - 1) * $review-step-collapsed-height;
-      height: calc(100vh - #{$review-step-count * $review-step-collapsed-height});
-    }
-
-    &.review-form__section--fixed {
       .review-form__step {
-        position: fixed;
-        left: 0;
-        right: 0;
+        position: relative;
+        top: ($i - 1) * $review-step-collapsed-height;
+        height: calc(100vh - #{$review-step-count * $review-step-collapsed-height});
       }
-    }
 
-    .review-form__section:not(.review-form__section--fixed) ~ & {
-      .review-form__step {
-        position: fixed;
-        top: calc(100vh - #{($review-step-count + 1 - $i) * $review-step-collapsed-height});
-        left: 0;
-        right: 0;
+      &.review-form__section--fixed {
+        .review-form__step {
+          position: fixed;
+          right: 0;
+          left: 0;
+        }
+      }
+
+      .review-form__section {
+        &:not(.review-form__section--fixed) ~ & {
+          .review-form__step {
+            position: fixed;
+            top: calc(100vh - #{($review-step-count + 1 - $i) * $review-step-collapsed-height});
+            right: 0;
+            left: 0;
+          }
+        }
       }
     }
   }
@@ -67,27 +71,27 @@ $review-step-collapsed-height: $small-spacing * 2 + modular-scale(1);
 }
 
 .review-form__step-content {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  justify-content: center;
   align-items: stretch;
+  justify-content: center;
 
   &::before {
-    content: '';
     flex: 1;
+    content: '';
   }
 
   &::after {
-    content: '';
     flex: 2;
+    content: '';
   }
 }
 
-.review_form__text-field {
+.review-form__text-field {
+  border: 0;
   font-size: modular-scale(3);
   font-weight: $bold-font-weight;
-  border: none;
 
   &:focus {
     outline: none;

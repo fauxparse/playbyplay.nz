@@ -8,19 +8,19 @@ body {
 }
 
 .page-content {
-  background: $white;
+  position: relative;
   min-height: 100vh;
   transform-origin: 50% 100%;
   transition: transform $full-page-duration $deceleration-timing $slow-duration, opacity $slow-duration $base-timing;
-  position: relative;
+  background: $white;
   z-index: 1;
 }
 
 .page-content--hidden {
   @include position(fixed, 0 0 null 0);
-  opacity: 0;
   transform: translateY(100vh);
   transition: transform $full-page-duration $acceleration-timing, opacity $slow-duration $base-timing $full-page-duration;
+  opacity: 0;
   pointer-events: none;
   touch-action: none;
 }

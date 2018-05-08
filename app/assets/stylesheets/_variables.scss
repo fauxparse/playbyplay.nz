@@ -1,3 +1,5 @@
+// sass-lint:disable no-color-hex
+
 $bourbon: (
   'modular-scale-ratio': $perfect-fourth,
   'modular-scale-base': 1em
@@ -9,6 +11,7 @@ $white: #fff;
 $light-grey: #dbedf3;
 $medium-grey: #404b69;
 $dark-grey: #283149;
+$black: #000;
 
 $action-color: $pink;
 $hover-color: lighten($pink, 1);
@@ -37,6 +40,6 @@ $medium-width: $line-width / 2;
 $base-duration: 150ms;
 $slow-duration: 300ms;
 $full-page-duration: 500ms;
-$base-timing: cubic-bezier(0.4, 0.0, 0.2, 1);
-$acceleration-timing: cubic-bezier(0.4, 0.0, 1, 1);
-$deceleration-timing: cubic-bezier(0.0, 0.0, 0.2, 1);
+$base-timing: cubic-bezier(0.4, 0, 0.2, 1);
+$acceleration-timing: cubic-bezier(0.4, 0, 1, 1);
+$deceleration-timing: cubic-bezier(0, 0, 0.2, 1);
