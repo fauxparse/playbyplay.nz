@@ -3,5 +3,5 @@
 class Production < ApplicationRecord
   include Sluggable
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 end

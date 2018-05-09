@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_09_190608) do
+ActiveRecord::Schema.define(version: 2018_05_09_191240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,9 @@ ActiveRecord::Schema.define(version: 2018_05_09_190608) do
     t.integer "versions_count", default: 0
     t.bigint "production_id"
     t.date "performance_date"
+    t.bigint "reviewer_id"
     t.index ["production_id"], name: "index_reviews_on_production_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -61,4 +63,5 @@ ActiveRecord::Schema.define(version: 2018_05_09_190608) do
 
   add_foreign_key "identities", "users", on_delete: :cascade
   add_foreign_key "reviews", "productions", on_delete: :restrict
+  add_foreign_key "reviews", "users", column: "reviewer_id", on_delete: :cascade
 end

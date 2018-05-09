@@ -3,6 +3,7 @@
 class Review < ApplicationRecord
   include Versionable
 
+  belongs_to :reviewer, class_name: 'User'
   belongs_to :production
 
   track_changes_to :text

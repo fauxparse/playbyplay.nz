@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   has_many :identities, dependent: :destroy, autosave: true
+  has_many :reviews, dependent: :destroy
 
   validates :name, presence: true
 
