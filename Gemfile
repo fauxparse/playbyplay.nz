@@ -48,6 +48,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'redcarpet'
+gem 'stringex'
 gem 'webpacker'
 
 group :development, :test do
