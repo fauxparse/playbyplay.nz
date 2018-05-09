@@ -7,5 +7,5 @@ class Review < ApplicationRecord
 
   track_changes_to :text
 
-  validates :text, presence: true
+  validates :text, :performance_date, presence: true
 end
