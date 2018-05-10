@@ -7,6 +7,8 @@ FactoryBot.define do
     name
     email { Faker::Internet.safe_email(name) }
 
+    factory :reviewer
+
     trait :facebook do
       after :build do |user|
         user.identities.build(provider: 'facebook', uid: Faker::Crypto.md5)

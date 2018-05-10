@@ -4,7 +4,7 @@ class Review < ApplicationRecord
   include Versionable
 
   belongs_to :reviewer, class_name: 'User'
-  belongs_to :production
+  belongs_to :production, autosave: true
 
   track_changes_to :text
 
