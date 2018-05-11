@@ -3,8 +3,17 @@
 class Productions
   include Enumerable
 
+  OPTIONS = %i[query limit].freeze
+  OPTIONS.each { |option| attr_reader(option) }
+
   def initialize(options = {})
-    self.options = options
+    self.options = options.to_h.symbolize_keys
+  end
+
+  def options
+    OPTIONS.inject({}) do |result, key|
+      result.merge(key => send(key))
+    end
   end
 
   def each
@@ -15,9 +24,6 @@ class Productions
     end
   end
 
-  OPTIONS = %i[query limit].freeze
-  OPTIONS.each { |option| attr_reader(option) }
-
   private
 
   def scope
@@ -27,12 +33,6 @@ class Productions
   def options=(options)
     options.assert_valid_keys(:scope, *OPTIONS).each do |option, value|
       instance_variable_set(:"@#{option}", value)
-    end
-  end
-
-  def options
-    OPTIONS.inject({}) do |result, key|
-      result.merge(key => send(key))
     end
   end
 
