@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
+  def new
+    redirect_to root_path if logged_in?
+  end
+
   def create
     self.current_user = UserFromOauth.new(auth_hash).user
     redirect_to location_after_login
