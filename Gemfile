@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'acts_as_list', git: 'git@github.com:swanandp/acts_as_list.git'
 gem 'autoprefixer-rails'
 gem 'bourbon', github: 'thoughtbot/bourbon'
+gem 'css-class-string'
 gem 'diff-lcs'
 gem 'figaro'
 gem 'haml-rails'

@@ -1,107 +1,173 @@
-$review-step-count: 4;
-$review-step-collapsed-height: $small-spacing * 2 + modular-scale(1);
-
-.review-form__step {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: $small-spacing 0 $small-spacing $base-spacing;
-  border-top: 1px solid rgba($medium-grey, 0.25);
-  background: $white;
-  box-sizing: border-box;
-
-  :first-of-type > & {
-    border-top-color: transparent;
-  }
+.review-form__header {
+  padding: 1em 0.5em;
 
   @include medium-screens {
-    padding-left: $keyline;
-  }
-
-  @include wide-screens {
-    padding: $base-spacing calc(50vw - #{$line-width / 2});
+    padding: 1em #{$keyline - 0.5em};
   }
 }
 
-@for $i from 1 through $review-step-count {
-  .review-form__section {
-    &:nth-child(#{$i}) {
-      height: calc(100vh - #{($review-step-count - $i) * $review-step-collapsed-height});
-      margin-top: (1 - $i) * $review-step-collapsed-height;
+.review-form__steps {
+  display: flex;
+  position: relative;
+}
 
-      .review-form__step {
-        position: relative;
-        top: ($i - 1) * $review-step-collapsed-height;
-        height: calc(100vh - #{$review-step-count * $review-step-collapsed-height});
-      }
+.review-form__step {
+  @include size(2.5em);
+  margin-right: 0.5em;
+  padding: 0.5em;
+  transition: opacity $base-duration $base-timing;
+  cursor: pointer;
 
-      &.review-form__section--fixed {
-        .review-form__step {
-          position: fixed;
-          right: 0;
-          left: 0;
-        }
-      }
+  .review-form__step--current ~ & {
+    opacity: 0.375;
+    pointer-events: none;
+    touch-action: none;
+  }
+}
 
-      .review-form__section {
-        &:not(.review-form__section--fixed) ~ & {
-          .review-form__step {
-            position: fixed;
-            top: calc(100vh - #{($review-step-count + 1 - $i) * $review-step-collapsed-height});
-            right: 0;
-            left: 0;
-          }
-        }
+.review-form__step-icon {
+  @include size(1.5em);
+  display: block;
+  color: $medium-grey;
+
+  path {
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+}
+
+.review-form__step-highlight {
+  @include position(absolute, 0 null 0 0);
+  height: 2.5em;
+  opacity: 0.25;
+  z-index: -1;
+  filter: url('#goo');
+
+  circle {
+    transform: scale(0);
+    transition: transform $slow-duration $base-timing $base-duration;
+    fill: $blue;
+  }
+}
+
+@for $i from 1 through 5 {
+  .review-form__step-highlight {
+    circle:nth-child(#{$i}) {
+      transform-origin: #{48 * $i - 28}px 50%;
+    }
+  }
+
+  .review-form__step--current:nth-child(#{$i}) {
+    opacity: 1;
+
+    ~ .review-form__step-highlight {
+      circle:nth-child(#{$i}) {
+        transform: scale(1);
+        transition-delay: 0s;
       }
     }
   }
 }
 
-.review-form__heading {
-  @include ellipsis;
-  display: block;
-  margin: 0;
-  font-size: modular-scale(1);
-  font-weight: $light-font-weight;
-  line-height: 1;
+.review-form__sections {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  transition: transform $slow-duration $base-timing;
+  background: $white;
+}
 
-  a {
-    color: inherit;
+.review-form__section {
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
+.review-form__section-title {
+  margin: 0 1rem $small-spacing;
+  color: $secondary-font-color;
+  font-size: modular-scale(1);
+  font-weight: $base-font-weight;
+
+  @include medium-screens {
+    margin-left: #{$keyline / modular-scale(1)}em;
   }
 }
 
-.review-form__step-content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
+.review-form__section-subtitle {
+  margin: 0 1rem $small-spacing;
+  color: $secondary-font-color;
+  font-size: modular-scale(0);
+  font-weight: $base-font-weight;
 
-  &::before {
-    flex: 1;
-    content: '';
-  }
-
-  &::after {
-    flex: 2;
-    content: '';
+  @include medium-screens {
+    margin-left: $keyline;
   }
 }
 
 .review-form__text-field {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 1em;
   border: 0;
-  font-size: modular-scale(3);
-  font-weight: $bold-font-weight;
-
-  &:focus {
-    outline: none;
-  }
+  outline: none;
 
   &::placeholder {
-    color: rgba($medium-grey, 0.25);
+    color: $secondary-font-color;
+    opacity: 0.5;
+  }
+
+  &.selected {
+    background-color: $highlight-color;
+  }
+}
+
+.review-form__text-field--large {
+  padding-left: 1rem;
+  font-size: modular-scale(2);
+  font-weight: $bold-font-weight;
+
+  @include medium-screens {
+    padding-left: #{$keyline / modular-scale(5)}em;
+    font-size: modular-scale(5);
+  }
+}
+
+.review-form__buttons {
+  display: flex;
+  padding: 1em;
+
+  @include medium-screens {
+    padding: $base-spacing $keyline;
+  }
+}
+
+.review-form__productions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review-form__production {
+  display: block;
+  margin: 0;
+  padding: $small-spacing 1em;
+
+  &.selected {
+    background-color: $highlight-color;
   }
 
   @include medium-screens {
-    font-size: modular-scale(5);
+    padding-left: $keyline;
   }
+}
+
+.review-form__production-name {
+  @include ellipsis;
+  display: block;
+  font-size: modular-scale(1);
 }

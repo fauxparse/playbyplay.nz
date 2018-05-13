@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :productions, only: %i[index]
-  resources :reviews, only: %i[new]
+  resources :reviews, only: %i[new create]
 
   root to: 'reviews#index'
 end

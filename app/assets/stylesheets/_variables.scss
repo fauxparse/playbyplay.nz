@@ -13,6 +13,8 @@ $medium-grey: #404b69;
 $dark-grey: #283149;
 $black: #000;
 
+$base-font-color: $dark-grey;
+$secondary-font-color: $medium-grey;
 $action-color: $pink;
 $hover-color: lighten($pink, 1);
 $highlight-color: rgba($blue, 0.25);
@@ -23,16 +25,16 @@ $light-font-weight: 200;
 $base-font-weight: 400;
 $bold-font-weight: 600;
 $black-font-weight: 800;
-$base-line-height: modular-scale(2);
+$base-line-height: 1.5;
 
 $base-border-width: 1px;
 $base-border-radius: #{3em / strip-unit($base-font-size)};
 
 $icon-size: 1.5em;
-$base-spacing: modular-scale(1);
-$small-spacing: modular-scale(-1);
-$large-spacing: modular-scale(3);
-$keyline: $base-spacing * 2 + $large-spacing;
+$base-spacing: 1.5em;
+$small-spacing: $base-spacing / 2;
+$large-spacing: 2.5em;
+$keyline: 4.5em;
 $line-width: 60em;
 $narrow-width: $line-width / 3;
 $medium-width: $line-width / 2;

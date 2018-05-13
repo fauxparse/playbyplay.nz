@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   min-height: 100vh;
   background: $dark-grey;
@@ -5,6 +11,10 @@ body {
 
 .turbolinks-progress-bar {
   background-color: $action-color;
+}
+
+.hidden {
+  display: none;
 }
 
 .page-content {
