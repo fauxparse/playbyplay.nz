@@ -9,6 +9,11 @@ en:
   reviews:
     index:
       new: 'Write a review'
+    new:
+      what: 'What did you see?'
+      when: 'When did you see it?'
+      production_name: 'Name of production…'
+      looking_for: 'Are you looking for…'
 
   sessions:
     login_form:

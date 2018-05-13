@@ -1,43 +1,29 @@
 import { Controller } from 'stimulus'
-import { tween } from 'popmotion'
-import scroll from 'stylefire/scroll'
-
-import 'mdn-polyfills/Array.from'
-import 'mdn-polyfills/Element.prototype.closest'
+import autosize from 'autosize'
 
 export default class extends Controller {
+  static targets = ['step', 'progress', 'slider']
+
   connect() {
-    this.observer = new IntersectionObserver(this.scrolled, {
-      threshold: [0.95, 0.96, 0.97, 0.98, 0.99, 1]
-    })
-    Array.from(this.element.querySelectorAll('.review-form__section'))
-      .forEach(section => this.observer.observe(section))
+    autosize(this.element.querySelectorAll('textarea'))
+    this.index = this.index || 0
   }
 
-  disconnect() {
-    this.observer.disconnect()
+  get index() {
+    return parseInt(this.data.get('index') || '0')
   }
 
-  scrolled = entries => {
-    entries.forEach(entry =>
-      entry.target.classList.toggle(
-        'review-form__section--fixed',
-        entry.boundingClientRect.y < 0
-      )
-    )
+  set index(index) {
+    this.data.set('index', index)
+    this.stepTargets[index].classList.add('review-form__section--current')
+    const current = this.element.querySelector('.review-step--current')
+    current && current.classList.remove('review-step--current')
+    this.progressTargets[index].classList.add('review-step--current')
+    this.sliderTarget.style.transform = `translateX(${index * -100}%)`
   }
 
-  scrollTo(e) {
+  submit(e) {
     e.preventDefault()
-    const target = e.target.closest('a').getAttribute('href')
-    const targetElement = document.querySelector(target)
-    if (targetElement) {
-      const parent = document.documentElement
-      tween({
-        from: parent.scrollTop,
-        to: targetElement.offsetTop - 1,
-        duration: Math.abs(parent.scrollTop - targetElement.offsetTop)
-      }).start(scroll().set('top'))
-    }
+    this.index += 1
   }
 }

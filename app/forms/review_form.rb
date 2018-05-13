@@ -21,6 +21,10 @@ class ReviewForm
     valid? && review.save
   end
 
+  def to_model
+    review
+  end
+
   delegate(
     :performance_date,
     :performance_date=,
