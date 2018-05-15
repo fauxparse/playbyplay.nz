@@ -47,12 +47,14 @@ export default class extends Controller {
 
     if (noProductionSelected) {
       this._index = undefined
+      this.ensureVisible(this.nameTarget)
     } else {
       this._index = (index + this.productions.length) % this.productions.length
-      this.productionsTarget
+      const row = this.productionsTarget
         .querySelectorAll('.review-form__production')
         .item(this.index)
-        .classList.add('selected')
+      row.classList.add('selected')
+      this.ensureVisible(row)
     }
   }
 

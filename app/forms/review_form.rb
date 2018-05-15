@@ -44,6 +44,10 @@ class ReviewForm
     end
   end
 
+  def dates
+    (0...7).map { |d| d.days.ago.to_date }
+  end
+
   private
 
   def sanitize_attributes(attributes)

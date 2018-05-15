@@ -4,7 +4,7 @@ class ReviewsController < ApplicationController
   require_login only: %i[new]
 
   def new
-    @review = current_user.reviews.build(production: Production.new)
+    @review = current_user.reviews.build(production: Production.new, performance_date: Time.zone.today)
   end
 
   private

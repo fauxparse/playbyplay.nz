@@ -2,6 +2,12 @@ en:
   application:
     name: 'Play by Play'
 
+  date:
+    today: 'Today'
+    yesterday: 'Yesterday'
+    formats:
+      short: '%-d %B'
+
   shared:
     navigation:
       log_out: 'Log out'

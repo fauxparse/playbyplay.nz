@@ -1,3 +1,8 @@
+.review-form__body {
+  position: relative;
+  overflow-x: hidden;
+}
+
 .review-form__header {
   padding: 1em 0.5em;
 
@@ -141,6 +146,20 @@
   display: flex;
   padding: 1em;
 
+  .button {
+    order: 1;
+
+    &:first-child {
+      order: -1;
+    }
+  }
+
+  &::before {
+    flex: 1;
+    content: '';
+    order: 0;
+  }
+
   @include medium-screens {
     padding: $base-spacing $keyline;
   }
@@ -170,4 +189,41 @@
   @include ellipsis;
   display: block;
   font-size: modular-scale(1);
+}
+
+.review-form__date {
+  position: relative;
+
+  [type='radio'] {
+    position: absolute;
+    opacity: 0;
+  }
+}
+
+.review-form__date-label {
+  display: flex;
+  padding: 0.5em 1em;
+
+  :checked ~ & {
+    background-color: $highlight-color;
+  }
+
+  @include medium-screens {
+    padding-left: $keyline;
+  }
+}
+
+.review-form__day,
+.review-form__short-date {
+  font-size: modular-scale(1);
+  line-height: $base-line-height;
+}
+
+.review-form__day {
+  margin-right: 0.25em;
+  font-weight: bold;
+}
+
+.review-form__short-date {
+  opacity: 0.5;
 }
