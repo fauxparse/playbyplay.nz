@@ -1,6 +1,10 @@
 import { Controller } from 'stimulus'
 import isEmpty from 'lodash/isEmpty'
 
+const trueOffsetTop = element =>
+  element.offsetTop +
+  (element.offsetParent ? trueOffsetTop(element.offsetParent) : 0)
+
 export default class extends Controller {
   get errors() {
     if (!this._errors) this._errors = {}
@@ -41,6 +45,3 @@ export default class extends Controller {
     }
   }
 }
-const trueOffsetTop = element =>
-  element.offsetTop +
-  (element.offsetParent ? trueOffsetTop(element.offsetParent) : 0)

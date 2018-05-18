@@ -8,12 +8,17 @@ class ReviewForm
 
   validates :text, :production, :performance_date, presence: true
 
-  def initialize(review)
+  def initialize(review, attributes = {})
     @review = review
+    self.attributes = attributes
+  end
+
+  def attributes=(attributes)
+    super sanitize_attributes(attributes)
   end
 
   def update(attributes = {})
-    self.attributes = sanitize_attributes(attributes)
+    self.attributes = attributes
     save
   end
 
@@ -37,7 +42,7 @@ class ReviewForm
   )
 
   def production=(attributes)
-    if attributes[:id]
+    if attributes[:id].present?
       review.production_id = attributes[:id]
     else
       review.build_production(attributes)
@@ -51,7 +56,7 @@ class ReviewForm
   private
 
   def sanitize_attributes(attributes)
-    return attributes unless attributes.respond_to?(:permit)
+    return attributes || {} unless attributes.respond_to?(:permit)
     attributes.permit(
       :text,
       :performance_date,

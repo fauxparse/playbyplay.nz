@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :productions, only: %i[index]
-  resources :reviews, only: %i[new create]
+  resources :reviews, only: %i[new create] do
+    member do
+      post :submit
+    end
+  end
 
   root to: 'reviews#index'
 end

@@ -27,7 +27,7 @@ export default class extends Controller {
     this.currentSection && this.currentSection.blur()
     this.setCurrentElement(this.sectionTargets, index, CURRENT_SECTION)
     const controller = this.currentStepController
-    controller && controller.focus()
+    setTimeout(() => controller && controller.focus(), 500)
   }
 
   get currentSection() {

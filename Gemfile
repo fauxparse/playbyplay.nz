@@ -83,6 +83,7 @@ group :test do
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'rspec-collection_matchers', require: false
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'timecop'

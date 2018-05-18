@@ -15,8 +15,4 @@ export default class extends Controller {
   selectedRadioButton() {
     return this.element.querySelector(':checked')
   }
-
-  validate() {
-    console.log(this.date)
-  }
 }

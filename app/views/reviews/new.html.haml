@@ -7,16 +7,10 @@
         = inline_svg('icons/calendar', class: 'review-form__step-icon')
       .review-form__step{data: { target: 'review-form.step' }}
         = inline_svg('icons/write', class: 'review-form__step-icon')
-      .review-form__step{data: { target: 'review-form.step' }}
-        = inline_svg('icons/comment', class: 'review-form__step-icon')
-      .review-form__step{data: { target: 'review-form.step' }}
-        = inline_svg('icons/send', class: 'review-form__step-icon')
-      %svg.review-form__step-highlight{viewBox: '0 0 232 40'}
+      %svg.review-form__step-highlight{viewBox: '0 0 136 40'}
         %circle{cx: 20, cy: 20, r: 20}
         %circle{cx: 68, cy: 20, r: 20}
         %circle{cx: 116, cy: 20, r: 20}
-        %circle{cx: 164, cy: 20, r: 20}
-        %circle{cx: 212, cy: 20, r: 20}
 
   .review-form__body
     .review-form__sections{data: { target: 'review-form.slider' }}
@@ -47,3 +41,13 @@
         .review-form__buttons
           = button text: t('.back'), icon: 'back', data: { action: 'click->review-form#back' }
           = button text: t('.next'), icon: 'next', icon_position: :right, data: { action: 'click->review-form#next' }
+
+      %section.review-form__section{data: { target: 'review-form.section', controller: 'review-text' }}
+        %h3.review-form__section-title= t('.text')
+        .review-form__instructions= m t('.editor_instructions')
+
+        = form.text_area :text, rows: 10, placeholder: t('.editor_placeholder'), class: 'text-field review-form__text-field review-form__editor', data: { target: 'review-text.editor' }
+
+        .review-form__buttons
+          = button text: t('.back'), icon: 'back', data: { action: 'click->review-form#back' }
+          = button text: t('.finished'), icon: 'next', icon_position: :right

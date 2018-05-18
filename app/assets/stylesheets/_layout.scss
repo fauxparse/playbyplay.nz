@@ -34,3 +34,7 @@ body {
   pointer-events: none;
   touch-action: none;
 }
+
+.with-horizontal-padding {
+  @include horizontal-padding;
+}

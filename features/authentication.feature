@@ -18,3 +18,21 @@ Scenario: Log out
     And I click the logout link
    Then I should be on the home page
     And I should be logged out
+
+@facebook
+Scenario: Click a link requiring authentication
+  Given I have never logged in
+   When I visit the home page
+    And I choose to add a review
+   Then I should be taken to the login page
+   When I log in with Facebook
+   Then I should be on the new review page
+
+@facebook
+@javascript
+Scenario: Log in with Javascript enabled
+  Given I have never logged in
+   When I visit the home page
+    And I choose to add a review
+   When I log in with Facebook
+   Then I should be on the new review page
