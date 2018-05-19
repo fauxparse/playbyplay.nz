@@ -39,8 +39,7 @@ export default class extends Controller {
   }
 
   set index(index) {
-    const noProductionSelected =
-      index === undefined || !this.productions.length
+    const noProductionSelected = index === undefined || !this.productions.length
     const selectedRow = this.productionsTarget.querySelector('.selected')
     selectedRow && selectedRow.classList.remove('selected')
     this.nameTarget.classList.toggle('selected', noProductionSelected)
