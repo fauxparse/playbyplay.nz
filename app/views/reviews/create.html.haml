@@ -1,0 +1,9 @@
+.submit-review
+  %h1.submit-review__title= t('.thanks')
+
+  .submit-review__text
+    = m t('.next')
+
+    = button_to submit_review_path(review), class: 'button submit-review__button' do
+      = inline_svg('icons/send', class: 'button__icon')
+      %span.button__text= t('.submit')

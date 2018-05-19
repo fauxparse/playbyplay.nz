@@ -2,6 +2,9 @@
 
 FactoryBot.define do
   factory :review do
+    reviewer { create(:user) }
+    production
+    performance_date { Date.yesterday }
     text { Faker::Hipster.paragraphs(3).join("\n\n") }
 
     trait :with_multiple_versions do

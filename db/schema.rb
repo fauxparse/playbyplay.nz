@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_05_015433) do
+ActiveRecord::Schema.define(version: 2018_05_09_191240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,24 @@ ActiveRecord::Schema.define(version: 2018_05_05_015433) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
+  create_table "productions", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at"
+    t.index ["name"], name: "index_productions_on_name"
+    t.index ["slug"], name: "index_productions_on_slug", unique: true
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "versions_count", default: 0
+    t.bigint "production_id"
+    t.date "performance_date"
+    t.bigint "reviewer_id"
+    t.index ["production_id"], name: "index_reviews_on_production_id"
+    t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,4 +62,6 @@ ActiveRecord::Schema.define(version: 2018_05_05_015433) do
   end
 
   add_foreign_key "identities", "users", on_delete: :cascade
+  add_foreign_key "reviews", "productions", on_delete: :restrict
+  add_foreign_key "reviews", "users", column: "reviewer_id", on_delete: :cascade
 end

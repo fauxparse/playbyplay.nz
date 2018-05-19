@@ -12,9 +12,14 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .page-content
-      - if logged_in?
-        = "Logged in as #{current_user}"
-        = link_to 'Log out', logout_path, method: :delete
+      = render 'shared/navigation' unless current_page?(login_path)
       = yield
 
     = render '/sessions/login_form' unless logged_in? || current_page?(login_path)
+
+    %svg.hidden{:version => '1.1', :xmlns => 'http://www.w3.org/2000/svg'}
+      %defs
+        %filter#goo
+          %fegaussianblur{in: 'SourceGraphic', result: 'blur', stddeviation: '10'}
+          %fecolormatrix{in: 'blur', mode: 'matrix', result: 'goo', values: '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7'}
+          %fecomposite{in: 'SourceGraphic', in2: 'goo', operator: 'atop'}

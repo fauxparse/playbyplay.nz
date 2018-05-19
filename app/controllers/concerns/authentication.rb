@@ -32,15 +32,15 @@ module Authentication
   end
 
   def save_location_and_redirect_to(path)
-    self.location_before_login = request.path
+    self.location_after_login = request.path
     redirect_to(path)
   end
 
-  def location_before_login
-    session.delete(:location_before_login) || root_path
+  def location_after_login
+    session.delete(:location_after_login) || root_path
   end
 
-  def location_before_login=(path)
-    session[:location_before_login] = path
+  def location_after_login=(path)
+    session[:location_after_login] = path
   end
 end

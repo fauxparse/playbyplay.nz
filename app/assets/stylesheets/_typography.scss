@@ -1,13 +1,21 @@
-body {
+body,
+#{$all-text-inputs},
+#{$all-buttons} {
+  color: $base-font-color;
   font-family: $base-font-family;
   font-weight: $base-font-weight;
   line-height: $base-line-height;
+  color: $base-font-color;
+}
+
+::selection {
+  background: $highlight-color;
 }
 
 a {
+  transition: opacity $base-duration $base-timing;
   color: $action-color;
   text-decoration: none;
-  transition: opacity $base-duration $base-timing;
 
   &:hover {
     color: $hover-color;
@@ -22,6 +30,6 @@ p {
   background: linear-gradient(to bottom, transparent 87.5%, $highlight-color 87.5%);
 
   .dark-background & {
-    color: white;
+    color: $white;
   }
 }

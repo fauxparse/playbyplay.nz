@@ -1,0 +1,18 @@
+.navigation
+  = link_to root_path, class: 'navigation__link navigation__logo' do
+    = inline_svg 'logo'
+    %span= t('application.name')
+
+  - if logged_in?
+    .navigation__user{'data-controller': 'user-menu'}
+      = link_to '#', class: 'navigation__link', data: { target: 'user-menu.link' } do
+        = inline_svg('icons/user')
+        %span= current_user
+      .navigation__menu{'data-target': 'user-menu.menu'}
+        = link_to logout_path, method: :delete, class: 'navigation__menu-item logout-link' do
+          = inline_svg('icons/log_out')
+          %span= t('.log_out')
+  - else
+    = authenticated_link_to login_path, class: 'navigation__link login-link' do
+      = inline_svg('icons/user')
+      = t('.log_in')

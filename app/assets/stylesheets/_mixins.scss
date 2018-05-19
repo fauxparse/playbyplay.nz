@@ -3,3 +3,24 @@
     @content
   }
 }
+
+@mixin wide-screens {
+  @media (screen and min-width: #{$line-width + $base-spacing * 2}) {
+    @content
+  }
+}
+
+@mixin horizontal-padding {
+  padding-right: 1em;
+  padding-left: 1em;
+
+  @media (screen and min-width: #{$medium-width + $keyline + $base-spacing}) {
+    padding-right: $base-spacing;
+    padding-left: $keyline;
+  }
+
+  @media (screen and min-width: #{$line-width + $keyline + $base-spacing}) {
+    padding-right: calc((100vw - #{$line-width} - #{$keyline} - #{$base-spacing}) / 2 + #{$base-spacing});
+    padding-left: calc((100vw - #{$line-width} - #{$keyline} - #{$base-spacing}) / 2 + #{$keyline});
+  }
+}

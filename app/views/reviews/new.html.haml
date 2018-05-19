@@ -1,0 +1,53 @@
+= form_for review_form, html: { class: 'review-form', data: { controller: 'review-form', action: 'submit->review-form#submit' } } do |form|
+  %header.review-form__header
+    .review-form__steps
+      .review-form__step{data: { target: 'review-form.step' }}
+        = inline_svg('icons/ticket', class: 'review-form__step-icon')
+      .review-form__step{data: { target: 'review-form.step' }}
+        = inline_svg('icons/calendar', class: 'review-form__step-icon')
+      .review-form__step{data: { target: 'review-form.step' }}
+        = inline_svg('icons/write', class: 'review-form__step-icon')
+      %svg.review-form__step-highlight{viewBox: '0 0 136 40'}
+        %circle{cx: 20, cy: 20, r: 20}
+        %circle{cx: 68, cy: 20, r: 20}
+        %circle{cx: 116, cy: 20, r: 20}
+
+  .review-form__body
+    .review-form__sections{data: { target: 'review-form.slider' }}
+      %section.review-form__section{data: { target: 'review-form.section', controller: 'review-production' }}
+        = form.fields_for :production do |production|
+          %h3.review-form__section-title= t('.what')
+
+          = production.text_field :name, placeholder: t('.production_name'), class: 'text-field review-form__text-field review-form__text-field--large selected', autocomplete: 'off', data: { target: 'review-production.name', action: 'input->review-production#nameChanged keydown->review-production#keyDown' }
+          = production.hidden_field :id, data: { target: 'review-production.id' }
+
+          .review-form__buttons
+            = button text: t('.next'), icon: 'next', icon_position: :right, data: { target: 'review-production.next', action: 'click->review-form#next' }
+
+          .review-form__production-autocomplete.hidden{data: { target: 'review-production.autocomplete' }}
+            %h4.review-form__section-subtitle= t('.looking_for')
+            %ul.review-form__productions{data: { target: 'review-production.productions', action: 'click->review-production#productionClicked' }}
+
+      %section.review-form__section{data: { target: 'review-form.section', controller: 'review-date' }}
+        %h3.review-form__section-title= t('.when')
+        .review-form__dates
+          - form.object.dates.each do |date|
+            %label.review-form__date{data: { target: 'review-date.date' }}
+              = form.radio_button :performance_date, date, autocomplete: 'off'
+              .review-form__date-label
+                .review-form__day= recent_day(date)
+                .review-form__short-date= l(date, format: :short)
+
+        .review-form__buttons
+          = button text: t('.back'), icon: 'back', data: { action: 'click->review-form#back' }
+          = button text: t('.next'), icon: 'next', icon_position: :right, data: { action: 'click->review-form#next' }
+
+      %section.review-form__section{data: { target: 'review-form.section', controller: 'review-text' }}
+        %h3.review-form__section-title= t('.text')
+        .review-form__instructions= m t('.editor_instructions')
+
+        = form.text_area :text, rows: 10, placeholder: t('.editor_placeholder'), class: 'text-field review-form__text-field review-form__editor', data: { target: 'review-text.editor' }
+
+        .review-form__buttons
+          = button text: t('.back'), icon: 'back', data: { action: 'click->review-form#back' }
+          = button text: t('.finished'), icon: 'next', icon_position: :right
