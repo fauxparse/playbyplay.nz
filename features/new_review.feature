@@ -18,3 +18,4 @@ Scenario: Write a review
     And I click the 'Submit now' button
    Then I should be on the home page
     And my review should be created
+    And my review should be submitted

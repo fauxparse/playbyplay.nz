@@ -8,6 +8,7 @@ FactoryBot.define do
     email { Faker::Internet.safe_email(name) }
 
     factory :reviewer
+    factory :moderator
 
     trait :facebook do
       after :build do |user|

@@ -33,3 +33,7 @@ end
 Then('my review should be created') do
   expect(Review).to exist
 end
+
+Then('my review should be submitted') do
+  expect(Review.last).to be_submitted
+end

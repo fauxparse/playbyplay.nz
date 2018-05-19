@@ -15,13 +15,19 @@ class ReviewsController < ApplicationController
   end
 
   def submit
+    SubmitReview.new(review).call
     redirect_to root_path
   end
 
   private
 
   def review
-    @review ||= current_user.reviews.build
+    @review ||=
+      if params[:id]
+        Review.find(params[:id])
+      else
+        current_user.reviews.build
+      end
   end
 
   def review_form

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_09_191240) do
+ActiveRecord::Schema.define(version: 2018_05_19_222935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,8 +41,22 @@ ActiveRecord::Schema.define(version: 2018_05_09_191240) do
     t.bigint "production_id"
     t.date "performance_date"
     t.bigint "reviewer_id"
+    t.string "state", limit: 32, default: "draft"
     t.index ["production_id"], name: "index_reviews_on_production_id"
     t.index ["reviewer_id"], name: "index_reviews_on_reviewer_id"
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.bigint "review_id"
+    t.bigint "moderator_id"
+    t.integer "version_number"
+    t.string "state", limit: 32, default: "pending"
+    t.text "feedback"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["moderator_id"], name: "index_submissions_on_moderator_id"
+    t.index ["review_id"], name: "index_submissions_on_review_id"
+    t.index ["state"], name: "index_submissions_on_state"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,4 +78,6 @@ ActiveRecord::Schema.define(version: 2018_05_09_191240) do
   add_foreign_key "identities", "users", on_delete: :cascade
   add_foreign_key "reviews", "productions", on_delete: :restrict
   add_foreign_key "reviews", "users", column: "reviewer_id", on_delete: :cascade
+  add_foreign_key "submissions", "reviews", on_delete: :cascade
+  add_foreign_key "submissions", "users", column: "moderator_id", on_delete: :nullify
 end
