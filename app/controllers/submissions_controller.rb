@@ -8,7 +8,8 @@ class SubmissionsController < ApplicationController
   private
 
   def submissions
-    @submissions ||= Submissions.new(params.permit(Submissions.options))
+    @submissions ||=
+      Submissions.new(params)
   end
 
   helper_method :submissions

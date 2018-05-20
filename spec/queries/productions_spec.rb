@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Productions do
-  subject(:query) { Productions.new(**options) }
+  subject(:query) { Productions.new(parameters) }
 
   let(:plays) do
     <<~PLAYS.split("\n")
@@ -51,20 +51,20 @@ RSpec.describe Productions do
     plays.each { |play| create(:production, name: play) }
   end
 
-  context 'without options' do
-    let(:options) { {} }
+  context 'without parameters' do
+    let(:parameters) { {} }
 
     it { is_expected.to have_exactly(37).items }
   end
 
   context 'with a string query' do
-    let(:options) { { query: 'hen' } }
+    let(:parameters) { { query: 'hen' } }
 
     it { is_expected.to have_exactly(8).items }
   end
 
   context 'with a limit' do
-    let(:options) { { limit: 10 } }
+    let(:parameters) { { limit: 10 } }
 
     it { is_expected.to have_exactly(10).items }
   end

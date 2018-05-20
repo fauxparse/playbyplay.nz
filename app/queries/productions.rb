@@ -1,21 +1,18 @@
 # frozen_string_literal: true
 
-class Productions
-  include QueryOptions
-
-  query_options :query, :limit
-
-  def initialize(options = {})
-    self.options = options
+class Productions < ApplicationQuery
+  class Parameters < QueryParameters
+    property :query
+    property :limit
   end
 
   private
 
-  def scope_query(scope)
+  def query(scope, query)
     scope.where(table[:name].lower.matches("%#{query}%"))
   end
 
-  def scope_limit(scope)
+  def limit(scope, limit)
     scope.limit(limit)
   end
 

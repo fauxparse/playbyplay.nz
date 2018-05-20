@@ -379,6 +379,7 @@ DEPENDENCIES
   figaro
   haml-rails
   hashids
+  hashie
   inline_svg
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)

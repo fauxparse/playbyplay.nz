@@ -1,21 +1,13 @@
 # frozen_string_literal: true
 
-class Submissions
-  include QueryOptions
-
-  query_option :state
-
-  def initialize(options = {})
-    self.options = options
+class Submissions < ApplicationQuery
+  class Parameters < QueryParameters
+    property :state
   end
 
   private
 
-  def scope
+  def default_scope
     super.includes(review: %i[reviewer production])
-  end
-
-  def scope_state(scope)
-    scope.where(state: state)
   end
 end
