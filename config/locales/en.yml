@@ -10,6 +10,7 @@ en:
 
   shared:
     navigation:
+      submissions: 'Submissions'
       log_out: 'Log out'
 
   reviews:

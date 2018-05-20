@@ -16,7 +16,7 @@ class ProductionsController < ApplicationController
   def productions
     @productions ||=
       if params[:query].present?
-        Productions.new(params.permit(Productions::OPTIONS))
+        Productions.new(params.permit(Productions.options))
       else
         []
       end

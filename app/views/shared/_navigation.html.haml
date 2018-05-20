@@ -9,9 +9,14 @@
         = inline_svg('icons/user')
         %span= current_user
       .navigation__menu{'data-target': 'user-menu.menu'}
-        = link_to logout_path, method: :delete, class: 'navigation__menu-item logout-link' do
-          = inline_svg('icons/log_out')
-          %span= t('.log_out')
+        - if can? :read, Submission
+          = link_to submissions_path, class: 'navigation__item' do
+            = inline_svg('icons/submission', class: 'navigation__icon')
+            .navigation__text= t('.submissions')
+            = badge(Submission.pending.count)
+        = link_to logout_path, method: :delete, class: 'navigation__item' do
+          = inline_svg('icons/log_out', class: 'navigation__icon')
+          .navigation__text= t('.log_out')
   - else
     = authenticated_link_to login_path, class: 'navigation__link login-link' do
       = inline_svg('icons/user')
