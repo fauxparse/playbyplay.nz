@@ -7,16 +7,12 @@ export default class extends Controller {
   connect() {
     this.drop = new Drop({
       target: this.linkTarget,
-      content: this.menuTarget,
+      content: this.menuTarget.cloneNode(true),
       classes: 'navigation__dropdown',
       tetherOptions: {
         attachment: 'top right',
         targetAttachment: 'bottom right'
       }
     })
-  }
-
-  disconnect() {
-    this.drop.destroy()
   }
 }
