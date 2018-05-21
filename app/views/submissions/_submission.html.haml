@@ -1,4 +1,4 @@
-= link_to submission, class: 'submission' do
+= link_to submission, class: class_string('submission', "submission--#{submission.state}") do
   .submission__info
     .submission__production= submission.review.production.name
     .submission__review

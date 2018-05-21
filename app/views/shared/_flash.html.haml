@@ -1,0 +1,3 @@
+- flash.each do |type, message|
+  = content_tag :div, class: class_string('flash', "flash--#{type}") do
+    = message.html_safe

@@ -5,12 +5,25 @@ class SubmissionsController < ApplicationController
     authorize! :read, Submission
   end
 
+  def show
+    authorize! :read, submission
+  end
+
+  def approve
+    authorize! :update, submission
+    ApproveSubmission.new(submission, current_user).call
+    redirect_to submissions_path, alert: t('.approved')
+  end
+
   private
 
   def submissions
-    @submissions ||=
-      Submissions.new(params)
+    @submissions ||= Submissions.new(params)
   end
 
-  helper_method :submissions
+  def submission
+    @submission ||= Submission.find(params[:id])
+  end
+
+  helper_method :submission, :submissions
 end

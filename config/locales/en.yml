@@ -41,6 +41,10 @@ en:
       submit: 'Submit now'
 
   submissions:
+    approve:
+      approved: 'The review was approved.'
+    show:
+      approve: 'Approve'
     submission:
       ago: '%{age} ago'
 

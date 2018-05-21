@@ -38,3 +38,9 @@ body {
 .with-horizontal-padding {
   @include horizontal-padding;
 }
+
+.flash {
+  padding: 1em;
+  background: $panel-background-color;
+  border-bottom: $base-border;
+}

@@ -5,9 +5,14 @@ Given('I have never logged in') do
 end
 
 Given('I am logged in') do
-  visit(login_path)
-  click_link('Facebook')
+  @user ||= create(:user, :facebook)
+  log_in_as(@user)
   expect(page).to have_selector('.navigation__user')
+end
+
+Given('I am logged in as a moderator') do
+  @moderator = create(:moderator, :facebook)
+  log_in_as(@moderator)
 end
 
 When('I visit the login page') do

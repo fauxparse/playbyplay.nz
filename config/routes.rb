@@ -15,7 +15,11 @@ Rails.application.routes.draw do
       post :submit
     end
   end
-  resources :submissions, only: %i[index show]
+  resources :submissions, only: %i[index show] do
+    member do
+      post :approve
+    end
+  end
 
   root to: 'reviews#index'
 end

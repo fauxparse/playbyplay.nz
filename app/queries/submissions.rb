@@ -2,7 +2,7 @@
 
 class Submissions < ApplicationQuery
   class Parameters < QueryParameters
-    property :state
+    property :state, default: 'pending'
   end
 
   private
