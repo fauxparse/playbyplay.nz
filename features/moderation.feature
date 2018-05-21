@@ -9,6 +9,7 @@ Scenario: Approve a review
     And there is a pending submission
    When I visit the submissions page
     And I click on the submission
+    And I fill in my feedback
     And I click the 'Approve' button
    Then I should be on the submissions page
     And I should see confirmation that the submission was approved

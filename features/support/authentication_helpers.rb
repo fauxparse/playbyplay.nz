@@ -3,7 +3,8 @@
 module AuthenticationHelpers
   def log_in_as(user = nil, with: :facebook)
     user ||= create(:user)
-    identity = user.identities.find_by(provider: with) ||
+    identity =
+      user.identities.find_by(provider: with) ||
       create(:identity, user: user, provider: with)
     mock_oauth(identity)
     visit(login_path)

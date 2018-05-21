@@ -41,8 +41,10 @@ en:
       submit: 'Submit now'
 
   submissions:
-    approve:
+    moderate:
       approved: 'The review was approved.'
+      rejected: 'The review was rejected.'
+      changes_requested: 'Changes were requested to the review.'
     index:
       title: 'Submissions'
       tabs:
@@ -50,10 +52,19 @@ en:
         changes_requested: 'Feedback'
         approved: 'Approved'
         rejected: 'Rejected'
-    show:
-      approve: 'Approve'
     submission:
       ago: '%{age} ago'
+    moderation_pending:
+      approve: 'Approve'
+      change: 'Request changes'
+      reject: 'Reject'
+      feedback: |
+        Give some feedback on the review. If you’re rejecting the review or
+        requesting changes, you should give clear reasons, citing the Code of
+        Conduct. If you’re accepting the review, you can just say thank you!
+      cannot_self_moderate: |
+        **Note:** You can’t moderate your own submission. Ask another moderator
+        to have a look at it for you.
 
   sessions:
     login_form:

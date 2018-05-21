@@ -16,6 +16,7 @@ class Submission < ApplicationRecord
   }
 
   validates :review, :version_number, presence: true
+  validates :feedback, presence: true, unless: :pending?
 
   def version_number
     super || (self.version_number = review.version_number)

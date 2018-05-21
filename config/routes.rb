@@ -11,14 +11,10 @@ Rails.application.routes.draw do
 
   resources :productions, only: %i[index]
   resources :reviews, only: %i[new create] do
-    member do
-      post :submit
-    end
+    post :submit, on: :member
   end
   resources :submissions, only: %i[index show] do
-    member do
-      post :approve
-    end
+    match :moderate, on: :member, via: %i[patch put]
   end
 
   root to: 'reviews#index'

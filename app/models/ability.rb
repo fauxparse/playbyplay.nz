@@ -23,8 +23,8 @@ class Ability
 
   def grant_moderator_permissions(user)
     can :manage, [Review, Submission]
-    # cannot :update, Submission do |submission|
-    #   submission.review.reviewer_id == user.id
-    # end
+    cannot :moderate, Submission do |submission|
+      submission.review.reviewer_id == user.id
+    end
   end
 end

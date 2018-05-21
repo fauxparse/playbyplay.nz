@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Submissions, type: :query do
   subject(:query) { Submissions.new(parameters) }
   let!(:pending) { create(:submission) }
-  let!(:rejected) { create(:submission).tap(&:rejected!) }
+  let!(:rejected) { create(:submission, :rejected) }
 
   context 'without parameters' do
     let(:parameters) { {} }

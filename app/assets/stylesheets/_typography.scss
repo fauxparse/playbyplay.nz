@@ -39,6 +39,12 @@ p {
   .title {
     margin: $small-spacing 0 0;
     font-size: modular-scale(4);
-    font-weight: $black-font-weight;
+    font-weight: $heading-font-weight;
   }
+}
+
+.breadcrumbs {
+  @include all-caps;
+  padding: $small-spacing 0;
+  font-size: modular-scale(-1);
 }

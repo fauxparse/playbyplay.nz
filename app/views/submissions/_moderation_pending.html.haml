@@ -1,0 +1,16 @@
+- if can?(:moderate, submission)
+  = form_for submission, url: moderate_submission_path(submission), html: { class: 'moderation__feedback' } do |form|
+    = form.label :feedback, class: 'form__label form__label--required' do
+      = t('.feedback')
+    = form.text_area :feedback
+    - form.object.errors.full_messages_for(:feedback).each do |message|
+      %p.form__error= message
+
+    .form__buttons.moderation__buttons
+      = button class: 'moderation__reject', text: t('.reject'), icon: 'reject', name: 'submission[state]', value: 'rejected'
+      = button class: 'moderation__change', text: t('.change'), icon: 'change', name: 'submission[state]', value: 'changes_requested'
+      = button class: 'moderation__approve', text: t('.approve'), icon: 'approve', name: 'submission[state]', value: 'approved'
+
+- else
+  .moderation__feedback
+    .form__label= m t('.cannot_self_moderate')

@@ -13,6 +13,10 @@ When('I click on the submission') do
   click_on(@review.production.name)
 end
 
+When('I fill in my feedback') do
+  fill_in('submission_feedback', with: Faker::Hipster.paragraph)
+end
+
 Then('I should be on the submissions page') do
   expect(page).to have_current_path(submissions_path)
 end

@@ -82,6 +82,7 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    cry (0.1.0)
     css-class-string (0.1.1)
     cucumber (3.1.0)
       builder (>= 2.1.2)
@@ -369,6 +370,7 @@ DEPENDENCIES
   byebug
   cancancan
   capybara
+  cry
   css-class-string
   cucumber-rails
   database_cleaner

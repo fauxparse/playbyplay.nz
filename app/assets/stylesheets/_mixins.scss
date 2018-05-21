@@ -29,3 +29,9 @@
     padding-left: calc((100vw - #{$line-width} - #{$keyline} - #{$base-spacing}) / 2 + #{$keyline});
   }
 }
+
+@mixin all-caps {
+  font-weight: $base-font-weight;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

@@ -27,6 +27,7 @@ $base-font-weight: 400;
 $bold-font-weight: 600;
 $black-font-weight: 800;
 $base-line-height: 1.5;
+$heading-font-weight: $black-font-weight;
 
 $base-border-width: 1px;
 $base-border-radius: #{3em / strip-unit($base-font-size)};

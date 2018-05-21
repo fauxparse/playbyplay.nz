@@ -1,2 +1,12 @@
-= button_to approve_submission_path(submission), method: :post, class: 'button' do
-  %span.button__text= t('.approve')
+.moderation__review
+  .breadcrumbs
+    = link_to t('submissions.index.title'), submissions_path
+
+  .moderation__title
+    = "#{submission.reviewer}’s"
+    review of
+    = submission.production
+
+  = m submission.review.text
+
+= render "moderation_#{submission.state}"

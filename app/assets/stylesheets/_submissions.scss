@@ -106,3 +106,46 @@
     content: ' • ';
   }
 }
+
+.moderation__review {
+  @include horizontal-padding;
+  @include vertical-padding;
+}
+
+.moderation__title {
+  font-size: modular-scale(2);
+  font-weight: $heading-font-weight;
+}
+
+.moderation__feedback {
+  .form__label {
+    @include horizontal-padding;
+    display: block;
+
+    &::before {
+      display: block;
+      width: 3em;
+      height: 0.25em;
+      margin: $base-spacing 0 $small-spacing;
+      background: $action-color;
+      content: '';
+    }
+  }
+
+  textarea {
+    @include horizontal-padding;
+    @include vertical-padding($small-spacing);
+    display: block;
+    width: 100%;
+    min-height: $base-line-height * 5 + $small-spacing * 2;
+    margin: $small-spacing 0;
+    border: 0;
+    outline: none;
+    background: $panel-background-color;
+  }
+}
+
+.moderation__buttons {
+  @include horizontal-padding;
+  display: flex;
+}

@@ -9,13 +9,29 @@ class SubmissionsController < ApplicationController
     authorize! :read, submission
   end
 
-  def approve
+  def moderate
     authorize! :update, submission
-    ApproveSubmission.new(submission, current_user).call
-    redirect_to submissions_path, alert: t('.approved')
+    ModerateSubmission
+      .new(submission, current_user, moderation_params)
+      .on(:success) { moderation_success }
+      .on(:failure) { moderation_failure }
+      .call
   end
 
   private
+
+  def moderation_params
+    params.require(:submission)
+  end
+
+  def moderation_success
+    submission.reload
+    redirect_to submissions_path, alert: t(".#{submission.state}")
+  end
+
+  def moderation_failure
+    render :show
+  end
 
   def submissions
     @submissions ||= Submissions.new(params)
