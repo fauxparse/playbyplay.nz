@@ -10,8 +10,8 @@ class Submission < ApplicationRecord
 
   enum state: {
     pending: 'pending',
-    approved: 'approved',
     changes_requested: 'changes_requested',
+    approved: 'approved',
     rejected: 'rejected'
   }
 

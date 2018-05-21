@@ -43,6 +43,13 @@ en:
   submissions:
     approve:
       approved: 'The review was approved.'
+    index:
+      title: 'Submissions'
+      tabs:
+        pending: 'Pending'
+        changes_requested: 'Feedback'
+        approved: 'Approved'
+        rejected: 'Rejected'
     show:
       approve: 'Approve'
     submission:

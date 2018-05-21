@@ -1,2 +1,9 @@
 .submissions
+  %header.page-title
+    %h1.title= t('.title')
+  .tabs.submissions__tabs{role: 'tablist'}
+    - Submission.states.values.each do |state|
+      = link_to submissions_path(submissions.parameters.except(:page).merge(state: state)), role: 'tab', class: class_string('tab', 'submissions__tab', 'tab--active' => submissions.parameters[:state] == state) do
+        = badge(Submission.where(state: state).count)
+        %span.tab__text= t(state, scope: 'submissions.index.tabs')
   = render partial: 'submission', collection: submissions

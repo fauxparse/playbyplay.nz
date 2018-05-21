@@ -44,10 +44,12 @@
   }
 }
 
-a.button {
-  &[disabled] {
-    pointer-events: none;
-    touch-action: none;
+a {
+  &.button {
+    &[disabled] {
+      pointer-events: none;
+      touch-action: none;
+    }
   }
 }
 

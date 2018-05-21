@@ -32,3 +32,13 @@ p {
     color: $white;
   }
 }
+
+.page-title {
+  @include horizontal-padding;
+
+  .title {
+    margin: $small-spacing 0 0;
+    font-size: modular-scale(4);
+    font-weight: $black-font-weight;
+  }
+}
