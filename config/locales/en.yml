@@ -40,6 +40,10 @@ en:
         immediately.
       submit: 'Submit now'
 
+  submissions:
+    submission:
+      ago: '%{age} ago'
+
   sessions:
     login_form:
       title: 'Hello.'

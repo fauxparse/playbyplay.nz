@@ -1,6 +1,6 @@
-%tr.submission
-  %td
-    = link_to submission do
-      %span.submission__production= submission.review.production.name
+= link_to submission, class: 'submission' do
+  .submission__info
+    .submission__production= submission.review.production.name
+    .submission__review
       %span.submission__reviewer= submission.review.reviewer.name
-
+      %span.submission__time= t('.ago', age: time_ago_in_words(submission.created_at))

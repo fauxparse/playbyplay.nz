@@ -10,6 +10,11 @@
   }
 }
 
+@mixin vertical-padding($amount: $base-spacing) {
+  padding-top: $amount;
+  padding-bottom: $amount;
+}
+
 @mixin horizontal-padding {
   padding-right: 1em;
   padding-left: 1em;

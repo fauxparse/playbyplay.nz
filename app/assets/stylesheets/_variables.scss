@@ -30,6 +30,7 @@ $base-line-height: 1.5;
 
 $base-border-width: 1px;
 $base-border-radius: #{3em / strip-unit($base-font-size)};
+$base-border: $base-border-width solid $border-color;
 
 $icon-size: 1.5em;
 $base-spacing: 1.5em;

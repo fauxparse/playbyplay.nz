@@ -1,0 +1,64 @@
+.submissions {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    padding: $small-spacing;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  thead th {
+    border-bottom: 1px solid $medium-grey;
+  }
+
+  tbody {
+    td {
+      border-bottom: 1px solid $light-grey;
+    }
+  }
+}
+
+.submission {
+  @include horizontal-padding;
+  @include vertical-padding(0.5em);
+  display: block;
+  border-bottom: $base-border;
+
+  &:hover {
+    background: $panel-background-color;
+  }
+}
+
+.submission__production {
+  @include ellipsis;
+  display: block;
+  color: $base-font-color;
+}
+
+.submission__review {
+  @include ellipsis;
+  display: block;
+  font-size: modular-scale(-1);
+  color: $secondary-font-color;
+}
+
+.submission__time {
+  &::before {
+    content: ' • ';
+  }
+}

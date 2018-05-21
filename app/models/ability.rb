@@ -7,7 +7,7 @@ class Ability
     user ||= User.new
     grant_public_permissions
     grant_user_permissions(user) if user.persisted?
-    grant_moderator_permissions if user.moderator?
+    grant_moderator_permissions(user) if user.moderator?
   end
 
   private
@@ -21,7 +21,10 @@ class Ability
     can :update, Review, reviewer_id: user.id
   end
 
-  def grant_moderator_permissions
+  def grant_moderator_permissions(user)
     can :manage, [Review, Submission]
+    # cannot :update, Submission do |submission|
+    #   submission.review.reviewer_id == user.id
+    # end
   end
 end
