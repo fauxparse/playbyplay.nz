@@ -1,6 +1,7 @@
 import Controller from './review_step_controller'
 
 const KEYS = {
+  ESCAPE: 27,
   UP: 38,
   DOWN: 40
 }
@@ -89,6 +90,11 @@ export default class extends Controller {
       } else {
         this.index += e.which === KEYS.UP ? -1 : 1
       }
+    } else if (e.which === KEYS.ESCAPE) {
+      const form = e.target.closest('form')
+      this.index = undefined
+      this.productions = []
+      form && form.reset()
     }
   }
 

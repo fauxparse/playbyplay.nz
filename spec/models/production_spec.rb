@@ -22,4 +22,10 @@ RSpec.describe Production, type: :model do
 
     it { is_expected.to eq production.slug }
   end
+
+  describe '#to_s' do
+    subject(:string) { production.to_s }
+
+    it { is_expected.to eq production.name }
+  end
 end

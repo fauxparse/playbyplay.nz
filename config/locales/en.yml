@@ -65,6 +65,10 @@ en:
       cannot_self_moderate: |
         **Note:** You can’t moderate your own submission. Ask another moderator
         to have a look at it for you.
+    show:
+      review_of: '%{name}’s review of'
+      on_date: 'on'
+      save_changes: 'Save changes'
 
   sessions:
     login_form:

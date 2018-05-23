@@ -1,12 +1,20 @@
 # frozen_string_literal: true
 
 class SubmissionsController < ApplicationController
+  require_login
+
   def index
     authorize! :read, Submission
   end
 
   def show
     authorize! :read, submission
+  end
+
+  def update
+    authorize! :update, submission
+    update_review
+    redirect_to submission
   end
 
   def moderate
@@ -21,7 +29,12 @@ class SubmissionsController < ApplicationController
   private
 
   def moderation_params
-    params.require(:submission)
+    return {} unless params[:submission].present?
+    @moderation_params ||= params.require(:submission)
+  end
+
+  def review_params
+    @review_params ||= moderation_params[:review] || {}
   end
 
   def moderation_success
@@ -41,5 +54,13 @@ class SubmissionsController < ApplicationController
     @submission ||= Submission.find(params[:id])
   end
 
-  helper_method :submission, :submissions
+  def review_form
+    @review_form ||= ReviewForm.new(submission.review, review_params)
+  end
+
+  def update_review
+    review_form.update(review_params) if review_params.present?
+  end
+
+  helper_method :submission, :submissions, :review_form
 end

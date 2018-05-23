@@ -23,6 +23,7 @@ class ReviewForm
   end
 
   def save
+    production.save if production&.changed?
     valid? && review.save
   end
 
@@ -43,7 +44,10 @@ class ReviewForm
 
   def production=(attributes)
     if attributes[:id].present?
-      review.production_id = attributes[:id]
+      update_and_assign_production(
+        Production.find(attributes[:id]),
+        attributes.except(:id)
+      )
     else
       review.build_production(attributes)
     end
@@ -54,6 +58,17 @@ class ReviewForm
   end
 
   private
+
+  def update_and_assign_production(production, attributes)
+    if attributes.all? { |attr, value| production.send(attr) == value }
+      review.production = production
+    elsif production.reviews.to_a == [review]
+      production.attributes = attributes
+      review.production = production
+    else
+      review.build_production(attributes)
+    end
+  end
 
   def sanitize_attributes(attributes)
     return attributes || {} unless attributes.respond_to?(:permit)

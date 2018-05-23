@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :reviews, only: %i[new create] do
     post :submit, on: :member
   end
-  resources :submissions, only: %i[index show] do
+  resources :submissions, only: %i[index show update] do
     match :moderate, on: :member, via: %i[patch put]
   end
 

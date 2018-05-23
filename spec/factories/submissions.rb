@@ -8,5 +8,9 @@ FactoryBot.define do
       state 'rejected'
       feedback 'It just wasn’t that great'
     end
+
+    after :create do |submission|
+      submission.review.submitted! if submission.review.draft?
+    end
   end
 end

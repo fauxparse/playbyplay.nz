@@ -2,11 +2,20 @@
   .breadcrumbs
     = link_to t('submissions.index.title'), submissions_path
 
-  .moderation__title
-    = "#{submission.reviewer}’s"
-    review of
-    = submission.production
+  = form_for submission, html: { class: 'moderation__production inline__form', data: { controller: 'review-production' } } do |form|
+    = form.fields_for :review, submission.review do |review|
+      = review.fields_for :production, submission.production do |production|
+        .moderation__title
+          = production.label :name, t('.review_of', name: submission.reviewer), class: 'inline-label'
+          = production.text_field :name, class: 'text-field moderation__production-name', autocomplete: 'off', data: { target: 'review-production.name', action: 'input->review-production#nameChanged keydown->review-production#keyDown' }
+          = production.hidden_field :id, data: { target: 'review-production.id' }
+          = production.label :performance_date, t('.on_date'), class: 'inline-label'
+          = review.date_field :performance_date, class: 'text-field date-field moderation__performance-date'
+          = button text: t('.save_changes'), disabled: true, class: 'moderation__save', data: { target: 'review-production.next' }
 
-  = m submission.review.text
+        .moderation__production-autocomplete.hidden{data: { target: 'review-production.autocomplete' }}
+          %ul.moderation__productions{data: { target: 'review-production.productions', action: 'click->review-production#productionClicked' }}
+
+  .moderation__preview= m submission.review.text
 
 = render "moderation_#{submission.state}"
